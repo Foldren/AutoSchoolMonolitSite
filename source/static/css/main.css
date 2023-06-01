@@ -1,0 +1,9 @@
+input,
+textarea,
+button,
+select,
+a,
+div,
+svg{
+    -webkit-tap-highlight-color: transparent; /* Убирает синее свчение в моб версии */
+}

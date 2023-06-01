@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'NotoSans-Regular';
+  src: url("/source/static/fonts/NotoSans/Regular/NotoSans-Regular.ttf") format('ttf'),
+    url("/source/static/fonts/NotoSans/Regular/NotoSans-Regular.eot") format('eot'),
+    url("/source/static/fonts/NotoSans/Regular/NotoSans-Regular.woff") format('woff'),
+    url("/source/static/fonts/NotoSans/Regular/NotoSans-Regular.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'NotoSans-Medium';
+  src: url("/source/static/fonts/NotoSans/Medium/NotoSans-Medium.ttf") format('ttf'),
+    url("/source/static/fonts/NotoSans/Medium/NotoSans-Medium.eot") format('eot'),
+    url("/source/static/fonts/NotoSans/Medium/NotoSans-Medium.woff") format('woff'),
+    url("/source/static/fonts/NotoSans/Medium/NotoSans-Medium.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'NotoSans-SemiBold';
+  src: url("/source/static/fonts/NotoSans/SemiBold/NotoSans-SemiBold.ttf") format('ttf'),
+    url("/source/static/fonts/NotoSans/SemiBold/NotoSans-SemiBold.eot") format('eot'),
+    url("/source/static/fonts/NotoSans/SemiBold/NotoSans-SemiBold.woff") format('woff'),
+    url("/source/static/fonts/NotoSans/SemiBold/NotoSans-SemiBold.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'NotoSans-Bold';
+  src: url("/source/static/fonts/NotoSans/Bold/NotoSans-Bold.ttf") format('ttf'),
+    url("/source/static/fonts/NotoSans/Bold/NotoSans-Bold.eot") format('eot'),
+    url("/source/static/fonts/NotoSans/Bold/NotoSans-Bold.woff") format('woff'),
+    url("/source/static/fonts/NotoSans/Bold/NotoSans-Bold.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter-Regular';
+  src: url("/source/static/fonts/Inter/Regular/Inter-Regular.ttf") format('ttf'),
+    url("/source/static/fonts/Inter/Regular/Inter-Regular.eot") format('eot'),
+    url("/source/static/fonts/Inter/Regular/Inter-Regular.woff") format('woff'),
+    url("/source/static/fonts/Inter/Regular/Inter-Regular.woff2") format('woff2');
+}

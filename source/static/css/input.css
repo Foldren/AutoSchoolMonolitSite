@@ -1,0 +1,88 @@
+@import url("fonts.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .text-nsans-regular {
+        @apply font-notosans-regular text-base;
+    }
+    .text-nsans-medium {
+        @apply font-notosans-medium text-base text-black-custom;
+    }
+    .text-nsans-bold {
+        @apply font-notosans-bold text-2xl text-black-custom;
+    }
+    .btn-custom {
+        @apply rounded-md h-14 bg-lime-custom hover:bg-lime-dark-custom
+    }
+
+    .text-nsans-bold-700-18px {
+        @apply font-notosans-bold text-lg font-bold text-white;
+    }
+
+    /* Классы для текстов */
+    .text-regular-400-18 {
+        @apply font-notosans-regular text-lg font-normal;
+    }
+    .text-regular-500-14-19L {
+        @apply font-notosans-medium text-sm font-medium leading-[19px];
+    }
+    .text-regular-400-14-19L {
+        @apply font-notosans-regular text-lg font-normal leading-[19px];
+    }
+    .text-semibold-600-16-24 {
+        @apply font-notosans-semibold font-semibold text-base;
+    }
+    .text-bold-700-20 {
+        @apply font-notosans-bold font-bold text-xl;
+    }
+    .text-regular-400-14 {
+        @apply font-notosans-regular text-lg font-normal;
+    }
+    .text-bold-700-16 {
+        @apply font-notosans-bold text-base font-bold;
+    }
+    .text-regular-400-16 {
+        @apply font-notosans-regular text-base font-normal;
+    }
+    .text-medium-500-16 {
+        @apply font-notosans-medium text-base font-medium;
+    }
+    .text-regular-700-14 {
+        @apply font-notosans-regular text-lg font-bold;
+    }
+    .text-bold-700-18 {
+        @apply font-notosans-bold text-lg font-bold;
+    }
+    .text-bold-700-24 {
+        @apply font-notosans-bold text-2xl font-bold;
+    }
+
+    /* New text */
+
+    .text-regular-400-18-24L {
+        @apply font-notosans-regular text-lg font-normal leading-6;
+    }
+    .text-bold-700-48-65L {
+        @apply font-notosans-bold text-5xl font-bold leading-[65px];
+    }
+    .text-bold-700-32-44L {
+        @apply font-notosans-bold text-[32px] font-bold leading-[44px];
+    }
+    .text-bold-700-16-22L {
+        @apply font-notosans-bold text-base font-bold leading-[22px];
+    }
+    .text-h2 {
+        @apply font-notosans-regular font-bold text-4xl text-black-custom;
+    }
+
+
+    .category-car {
+        @apply text-bold-700-16-22L sm:text-bold-700-18 rounded-t-lg text-center py-4 px-6 text-black select-none cursor-pointer;
+    }
+
+    .lime-url {
+        @apply hover:text-lime-custom cursor-pointer select-none;
+    }
+}

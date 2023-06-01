@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'components/head.html' %}
+    <form id="send-application" class="hidden"></form>
+    <body class="overflow-x-hidden">
+        <div id="modalEl-1" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-screen p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-screen">
+            <div class="relative w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative flex flex-col gap-y-8 rounded-lg bg-white shadow px-4 py-10">
+                    <!-- Modal header -->
+                    <div class="flex flex-col mb-2">
+                        <button id="close-modal" type="button" class="-mt-24 bg-white p-3 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                            <svg class="w-5 h-5 flex-none" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <h2 class="text-bold-700-32-44L mt-14">
+                            Оставить заявку
+                        </h2>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="flex flex-col gap-y-8">
+                        <div class="flex flex-col gap-y-2">
+                            <span class="text-regular-500-14-19L">Имя</span>
+                            <input pattern="[a-z ,A-Zа-яА-Я.'-]+" required form="send-application" name="username" class="text-regular-400-14-19L rounded-lg bg-gray-light-custom border-0 py-3 px-4" type="text" placeholder="Ваше имя">
+                            <span class="text-regular-500-14-19L text-gray-400 pl-3">Допустимы символы алфавита а-Я, a-Z</span>
+                        </div>
+                        <div class="flex flex-col gap-y-2">
+                            <span class="text-regular-500-14-19L">Телефон</span>
+                            <input pattern="\+?(?=.*[0-9]).{11}" required form="send-application" name="phone" class="text-regular-400-14-19L rounded-lg bg-gray-light-custom border-0 py-3 px-4" type="text" placeholder="8 (888) 888 - 88 - 88">
+                            <span class="text-regular-500-14-19L text-gray-400 pl-3">Номер начиная с +7 или 8 без пробелов</span>
+                        </div>
+                        <label class="flex flex-row items-center gap-x-2.5 cursor-pointer">
+                            <input required form="send-application" name="politics" value="1" class="text-lime-custom focus:ring-0" type="checkbox">
+                            <span class="text-semibold-600-16-24 select-none">Я согласен(-на) с политикой конфидециальности</span>
+                        </label>
+                    </div>
+                    <!-- Modal footer -->
+                    <button id="send-application-btn" type="submit" form="send-application" class="btn-custom text-white text-semibold-600-16-24">Оставить заявку</button>
+                </div>
+            </div>
+        </div>
+        {% include 'components/start_body.html' %}
+        {% include 'components/navbar.html' %}
+        <div class="pt-28 sm:pt-40 px-4 sm:px-10">
+            <section class="flex flex-row xl:bg-[url('/source/static/images/car.png')] bg-none bg-right-top bg-no-repeat">
+                <div class="flex flex-col sm:gap-y-14 gap-y-6 max-w-[709px] text-start">
+                    <h1 class="hidden sm:inline-block font-notosans-regular text-7xl text-black-custom font-bold leading-[108px]">Доверьте свою безопасность профессионалам</h1>
+                    <h1 class="inline-block sm:hidden text-bold-700-48-65L text-black-custom">Уроки безопасного вождения</h1>
+                    <span class="text-regular-400-18-24L text-gray-custom">Получите все необходимые знания и навыки<br>для успешной сдачи экзамена в ГИБДД</span>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full sm:w-2/5" type="button">Оставить заявку</button>
+                </div>
+            </section>
+        </div>
+        <a id="services-anchor"></a>
+        <div class="sm:mt-36 mt-14 mx-4 sm:mx-10">
+            <section class="flex flex-col gap-y-10 pb-16">
+                <h2 class="text-bold-700-32-44L sm:text-h2 sm:text-center">Наши услуги</h2>
+                <div class="flex flex-row overflow-x-auto">
+                    <input id="categoryA" name="category" class="peer/cA hidden" type="radio" checked>
+                    <label id="accordion-1-heading-1" for="categoryA" class="whitespace-nowrap category-car w-max peer-checked/cA:bg-black-custom peer-checked/cA:text-white">Категория A</label>
+                    <input id="categoryB" name="category" class="peer/cB hidden" type="radio">
+                    <label id="accordion-1-heading-2" for="categoryB" class="whitespace-nowrap category-car w-max peer-checked/cB:bg-black-custom peer-checked/cB:text-white">Категория B</label>
+                    <input id="categoryC" name="category" class="peer/cC hidden" type="radio">
+                    <label id="accordion-1-heading-3" for="categoryC" class="whitespace-nowrap category-car w-max peer-checked/cC:bg-black-custom peer-checked/cC:text-white">Категория C</label>
+                    <input id="categoryD" name="category" class="peer/cD hidden" type="radio">
+                    <label id="accordion-1-heading-4" for="categoryD" class="whitespace-nowrap category-car w-max peer-checked/cD:bg-black-custom peer-checked/cD:text-white">Категория D</label>
+                    <input id="categoryRemake" name="category" class="peer/cR hidden" type="radio">
+                    <label id="accordion-1-heading-5" for="categoryRemake" class="category-car whitespace-nowrap peer-checked/cR:bg-black-custom peer-checked/cR:text-white">Восстановление навыков</label>
+                </div>
+                <hr class="h-px bg-gray-500 w-full -mt-10">
+                <div class="bg-lime-light-custom flex flex-row">
+                    <div class="w-1 bg-lime-custom"></div>
+                    <span class="text-black pl-2 text-regular-400-18 self-center text-start sm:py-5 py-4">При оформлении договора на несколько категорий скидка 2 000 ₽</span>
+                </div>
+            </section>
+            <section id="accordion-1-body-1" class="overflow-x-auto flex flex-row">
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Мотоциклы</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А1</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Квадрациклы</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А2</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Багги</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+            </section>
+            <section id="accordion-1-body-2" class="overflow-x-auto flex flex-row">
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Мотоциклы</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А1</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Квадрациклы</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А2</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Багги</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+            </section>
+            <section id="accordion-1-body-3" class="overflow-x-auto flex flex-row">
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Мотоциклы</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А1</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Квадрациклы</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А2</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Багги</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+            </section>
+            <section id="accordion-1-body-4" class="overflow-x-auto flex flex-row">
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Мотоциклы</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А1</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Квадрациклы</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А2</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Багги</span>
+                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+            </section>
+            <section id="accordion-1-body-5" class="hidden flex flex-col place-items-center">
+                <div class="max-w-[655px] sm:pb-28 pb-8 flex flex-col gap-y-10 place-items-center">
+                    <h2 class="text-h2">Восстановление навыков</h2>
+                    <span class="text-regular-400-18 text-gray-custom">Уже имеется водительское удостоверение, но чувствуете себя не увереным при управлении транспортным средством</span>
+                    <span class="text-regular-400-18 text-gray-custom">Оставьте заявку и мы решим вашу проблему</span>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+                <div class="flex flex-row gap-x-1">
+                    <div>
+                        <img src="{{ url_for('static', path='/images/car_1.png') }}">
+                    </div>
+                    <div class="hidden sm:flex">
+                        <img src="{{ url_for('static', path='/images/car_2.png') }}">
+                    </div>
+                </div>
+            </section>
+        </div>
+        <a id="advantages-anchor"></a>
+        <div class="sm:mt-24 mt-14 sm:mx-10">
+            <section class="bg-gray-light-custom sm:rounded-2xl p-4">
+                <h2 class="pt-6 sm:text-h2 text-bold-700-32-44L sm:text-center pb-10">Наши преимущества</h2>
+                <div class="flex md-custom:flex-row flex-col gap-y-1 gap-x-1">
+                    <div class="bg-white p-8 flex flex-col gap-y-2 rounded-3xl basis-1/4 md-custom:basis-full min-h-[307px]">
+                        <svg class="mb-14" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.0917 38.987C15.7592 39.7406 19.2781 40.1556 23 40.1556C26.7219 40.1556 30.2407 39.7406 32.9082 38.987C36.2718 38.0369 37.9773 36.628 37.9773 34.7998C37.9773 31.41 32.06 30.1736 28.1488 29.7272C31.81 23.4432 35.3761 16.4141 35.3761 12.8758C35.3761 6.05179 29.8242 0.5 23 0.5C16.1758 0.5 10.6239 6.05179 10.6239 12.8758C10.6239 16.4141 14.19 23.4431 17.8512 29.7272C13.94 30.1736 8.02266 31.41 8.02266 34.7998C8.02266 36.628 9.72816 38.0369 13.0917 38.987ZM23 3.63525C28.0954 3.63525 32.2409 7.78051 32.2409 12.8758C32.2409 15.5212 28.9243 22.5269 23.3692 31.6159C23.2645 31.7873 23.1106 31.8233 23 31.8233C22.8894 31.8233 22.7355 31.7873 22.6308 31.616C17.0757 22.5269 13.7592 15.5212 13.7592 12.8758C13.7592 7.78051 17.9046 3.63525 23 3.63525ZM19.6232 32.7048C19.7344 32.888 19.8455 33.0707 19.9557 33.2511C20.6092 34.3202 21.7473 34.9585 23 34.9585C24.2527 34.9585 25.3908 34.3202 26.0443 33.251C26.1545 33.0707 26.2655 32.888 26.3767 32.7048C31.2329 33.0728 34.0222 34.145 34.7322 34.7983C33.8771 35.5701 29.9435 37.0204 23 37.0204C16.0565 37.0204 12.1229 35.5701 11.2678 34.7983C11.9778 34.145 14.767 33.0728 19.6232 32.7048ZM45.5 36.8207C45.5 42.5187 34.1811 45.5 23 45.5C11.8189 45.5 0.5 42.5187 0.5 36.8207C0.5 35.4751 1.18187 33.4964 4.4304 31.7116C5.18945 31.2946 6.1422 31.5719 6.55914 32.3307C6.97599 33.0895 6.69881 34.0426 5.94003 34.4595C4.49686 35.2524 3.63525 36.1351 3.63525 36.8207C3.63525 37.728 5.20224 39.1758 8.70292 40.3652C12.4983 41.6546 17.5758 42.3648 23 42.3648C28.4242 42.3648 33.5018 41.6546 37.2972 40.3652C40.7979 39.1758 42.3648 37.728 42.3648 36.8207C42.3648 36.1351 41.5031 35.2524 40.0601 34.4595C39.3013 34.0426 39.0241 33.0895 39.441 32.3307C39.8579 31.5719 40.811 31.2949 41.5697 31.7116C44.8181 33.4963 45.5 35.4751 45.5 36.8207ZM28.1327 12.0445C28.1327 9.21423 25.8302 6.91169 23 6.91169C20.1698 6.91169 17.8673 9.21423 17.8673 12.0445C17.8673 14.8747 20.1698 17.1771 23 17.1771C25.8302 17.1771 28.1327 14.8746 28.1327 12.0445ZM21.0026 12.0445C21.0026 10.943 21.8986 10.0469 23 10.0469C24.1014 10.0469 24.9974 10.943 24.9974 12.0445C24.9974 13.1458 24.1014 14.0418 23 14.0418C21.8986 14.0418 21.0026 13.1458 21.0026 12.0445Z" fill="black"/>
+                        </svg>
+                        <span class="text-bold-700-20 text-black-custom">Удобное расположение</span>
+                        <span class="text-regular-400-18 text-gray-custom">19 филиалов в Москве и МО</span>
+                    </div>
+                    <div class="bg-white p-8 flex flex-col gap-y-2 rounded-3xl basis-1/4 md-custom:basis-full min-h-[307px]">
+                        <svg class="mb-14" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.0527 21.1417C14.8243 20.5075 14.2227 20.0846 13.5486 20.0846H12.3142C11.6401 20.0846 11.0385 20.5075 10.8101 21.1417L3.18867 42.3024H2.09878C1.2158 42.3024 0.5 43.0182 0.5 43.9012C0.5 44.7842 1.2158 45.5 2.09878 45.5H23.7641C24.6471 45.5 25.3629 44.7842 25.3629 43.9012C25.3629 43.0182 24.6471 42.3024 23.7641 42.3024H22.6741L15.0527 21.1417ZM16.7353 35.2491H9.12754L10.5162 31.3935H15.3466L16.7353 35.2491ZM12.9314 24.6879L14.1949 28.1959H11.6679L12.9314 24.6879ZM7.97587 38.4467H17.8869L19.2757 42.3024H6.58714L7.97587 38.4467ZM28.4536 21.5893C28.4536 22.5637 27.6637 23.3536 26.6893 23.3536H20.3019C19.3275 23.3536 18.5376 22.5637 18.5376 21.5893C18.5376 20.615 19.3275 19.8251 20.3019 19.8251H26.6893C27.6637 19.8251 28.4536 20.615 28.4536 21.5893ZM42.7513 13.4169L39.1513 3.91624C38.4275 1.8725 36.4888 0.5 34.3194 0.5H11.8212C9.65187 0.5 7.71312 1.8725 6.98937 3.91624L3.3875 13.4169C1.75625 14.2831 0.640625 15.9969 0.640625 17.9694V28.7234C0.640625 29.6197 1.36718 30.3462 2.26344 30.3462C3.15969 30.3462 3.88625 29.6197 3.88625 28.7234V17.9675C3.88625 16.9164 4.73831 16.0644 5.78938 16.0644H40.3512C41.4034 16.0644 42.2563 16.9173 42.2563 17.9694V25.1994C42.2563 26.2494 41.4031 27.1025 40.3512 27.1025H23.0197C22.1143 27.1025 21.3276 27.8432 21.3408 28.7485C21.3472 29.187 21.5278 29.5828 21.815 29.8719C22.1094 30.1644 22.5144 30.3462 22.9625 30.3462H35.225V31.2612C35.225 34.0494 37.4075 36.41 40.1956 36.4925C43.0925 36.5787 45.4775 34.2481 45.4775 31.37V25.6831C45.4906 25.5237 45.5 25.3625 45.5 25.1994V17.9694C45.5 15.9969 44.3844 14.2813 42.7513 13.4169ZM7.03251 12.8206L9.98563 5.03187L10.0006 4.99063C10.2706 4.21812 11.0019 3.69875 11.8213 3.69875H34.3194C35.1387 3.69875 35.87 4.21812 36.14 4.99063L39.1063 12.8206H7.03251ZM42.2788 31.37C42.2788 32.4331 41.4144 33.2975 40.3512 33.2975C39.2881 33.2975 38.4238 32.4331 38.4238 31.37V30.3462H40.3512C41.0337 30.3462 41.6825 30.2131 42.2788 29.9712V31.37ZM36.8245 23.3527C35.8506 23.3527 35.0611 22.5632 35.0611 21.5893C35.0611 20.6155 35.8506 19.826 36.8245 19.826C37.7983 19.826 38.5878 20.6155 38.5878 21.5893C38.5878 22.5632 37.7983 23.3527 36.8245 23.3527Z" fill="black"/>
+                        </svg>
+                        <span class="text-bold-700-20 text-black-custom">Свои автодромы</span>
+                        <span class="text-regular-400-18 text-gray-custom">4 автодрома, полностью оборудованных для оттачивания своих навыков вождения</span>
+                    </div>
+                    <div class="bg-white p-8 flex flex-col gap-y-2 rounded-3xl basis-1/4 md-custom:basis-full min-h-[307px]">
+                        <svg class="mb-14" width="42" height="46" viewBox="0 0 42 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M41.2859 44.4899C41.2842 40.3361 40.705 37.0914 39.5155 34.5719C37.9822 31.3251 35.4337 29.3131 31.9412 28.5913L26.1006 27.5446V26.8484C28.0188 25.6436 29.4528 23.8033 30.1524 21.6489C32.4987 21.4162 34.3354 19.4903 34.3354 17.1565C34.3322 15.9283 33.8203 14.7564 32.9215 13.9194L33.1772 12.5891C33.8275 9.21033 31.6696 6.18288 29.3059 4.36105C28.4292 1.79839 26.3403 0.5 23.0891 0.5H18.9107C15.9039 0.517368 13.0433 1.7992 11.0292 4.03167C9.31257 5.96147 8.52343 8.35559 8.80707 10.7728L9.166 13.8362C8.21292 14.6771 7.66539 15.8858 7.66174 17.1568C7.66174 19.4904 9.4983 21.4163 11.8447 21.6491C12.5443 23.8035 13.9783 25.6438 15.8964 26.8487V27.5448L10.0916 28.5848L10.056 28.5916C6.56327 29.3131 4.01479 31.3251 2.48144 34.5722C1.2901 37.0953 0.710938 40.3455 0.710938 44.5085V44.5088C0.710938 45.0561 1.15461 45.4997 1.70191 45.4997H2.46479C3.01209 45.4997 3.45576 45.0561 3.45576 44.5088C3.45576 36.5805 5.67907 32.3822 10.4498 31.3148V38.4803C8.58948 39.2366 7.69224 41.3547 8.44106 43.2162C9.15798 44.9984 11.1959 45.9309 13.0109 45.3016C14.9995 44.6122 15.9808 42.4088 15.1984 40.484C14.8281 39.5732 14.1055 38.8506 13.1947 38.4803V30.8171L16.4672 30.2309C16.899 31.1761 17.27 32.0165 17.5835 32.7261C18.1378 33.9824 18.5385 34.8902 18.901 35.5459C19.167 36.0275 19.7897 37.1556 20.9643 37.1596H20.9706C22.14 37.1596 22.7673 36.0422 23.0356 35.5646C23.4007 34.914 23.8053 34.014 24.3654 32.7684C24.6894 32.0475 25.0738 31.1926 25.5225 30.2295L28.7297 30.8045V34.2813C26.4491 34.9033 24.8658 36.9732 24.8625 39.3371V44.1276C24.8625 44.8856 25.477 45.5 26.235 45.5H27.6073C28.3162 45.5 28.8909 44.9253 28.8909 44.2163V44.0388C28.8909 43.3299 28.3162 42.7552 27.6073 42.7552V39.3371C27.6157 37.9593 28.7394 36.8492 30.1172 36.8576C31.4831 36.8659 32.5884 37.9712 32.5967 39.3371V42.7552C31.8878 42.7552 31.3132 43.3298 31.3132 44.0387V44.2164C31.3132 44.9253 31.8878 45.5 32.5967 45.5H33.9691C34.7271 45.5 35.3415 44.8856 35.3415 44.1276V39.3371C35.3383 36.9733 33.7551 34.9033 31.4746 34.2813V31.2986C36.2951 32.3396 38.5413 36.5402 38.5413 44.5086C38.5413 45.0457 38.9767 45.4811 39.5138 45.4811H40.3136C40.8507 45.4811 41.2861 45.0457 41.2861 44.5086V44.4899H41.2859ZM30.6159 15.6138C31.4673 16.0183 31.8296 17.0365 31.4251 17.8879C31.2565 18.2428 30.9707 18.5286 30.6159 18.6972V15.6138ZM11.381 18.6972C10.5295 18.2928 10.1671 17.2747 10.5715 16.4233C10.7401 16.0683 11.026 15.7824 11.381 15.6138V18.6972ZM11.8223 42.7552C11.3254 42.7552 10.9225 42.3525 10.9225 41.8556C10.9224 41.3587 11.3252 40.9559 11.8221 40.9559C12.3189 40.9558 12.7218 41.3586 12.7218 41.8554C12.7213 42.3521 12.3189 42.7546 11.8223 42.7552ZM11.641 11.3727L11.5332 10.4533C11.3422 8.82469 11.8915 7.19225 13.0801 5.85607C14.5704 4.20506 16.6866 3.25739 18.9107 3.2451H23.0889C25.8055 3.2451 26.4782 4.35374 26.8004 5.55167C26.8833 5.8598 27.0709 6.12943 27.3311 6.31418C29.1426 7.60013 30.9208 9.78766 30.4814 12.0711L30.3924 12.5341C30.1192 11.5723 29.5781 10.5625 28.6745 10.0954C27.5527 9.51309 26.2654 9.58134 25.0536 10.2855C24.984 10.3257 24.6883 10.4392 23.8012 10.2182C22.9951 10.0176 22.0421 9.62901 21.033 9.21775C18.4752 8.17472 15.5757 6.99334 13.4616 8.4148C12.5591 9.02149 11.9559 9.99892 11.641 11.3727ZM23.3556 28.3839C22.7579 29.6478 22.2636 30.7474 21.8611 31.643C21.5542 32.3255 21.2419 33.02 20.9753 33.5709C20.71 33.0136 20.3995 32.3097 20.0941 31.6178C19.7024 30.7303 19.2212 29.6398 18.6412 28.3893V28.0246C20.1885 28.4149 21.8084 28.4149 23.3556 28.0246V28.3839ZM20.9985 25.5725C17.2039 25.5675 14.1294 22.4919 14.1258 18.6973V14.0107C14.1258 12.247 14.4339 11.0686 14.9932 10.6925C15.197 10.5553 15.4709 10.497 15.7942 10.497C16.9003 10.497 18.5826 11.1828 19.9971 11.7596C22.4062 12.7415 24.6816 13.669 26.4291 12.661C26.9636 12.35 27.2617 12.4586 27.3846 12.5186C27.5728 12.6973 27.8711 13.463 27.8711 14.0109V18.6975C27.8675 22.4921 24.793 25.5676 20.9985 25.5725Z" fill="black"/>
+                        </svg>
+                        <span class="text-bold-700-20 text-black-custom">Все в одном месте</span>
+                        <span class="text-regular-400-18 text-gray-custom">Прохождение медицинской комиссии в одном месте</span>
+                    </div>
+                    <div class="bg-white p-8 flex flex-col gap-y-2 rounded-3xl basis-1/4 md-custom:basis-full min-h-[307px]">
+                        <svg class="mb-14" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30.4848 31.0952L27.1114 25.0041C25.9232 22.8781 23.5804 21.5576 20.9974 21.5576H12.7364C10.1557 21.5576 7.81387 22.8766 6.62221 25.0047L3.2732 31.0408C3.23644 31.1071 3.20722 31.1753 3.18169 31.2443C2.13634 32.3429 1.5 33.7846 1.5 35.3625V42.6811C1.5 44.7869 3.21324 46.5001 5.31901 46.5001C7.02616 46.5001 8.47537 45.3741 8.96288 43.8258H24.7378C25.1753 45.3675 26.5958 46.5001 28.2757 46.5001H28.5603C30.5876 46.5001 32.2369 44.8508 32.2369 42.8235V35.3214C32.2369 33.7494 31.597 32.3135 30.5464 31.2209C30.5279 31.1785 30.5077 31.1365 30.4848 31.0952ZM9.17627 26.4282C9.83835 25.2457 11.2358 24.4815 12.7364 24.4815H20.9974C22.4992 24.4815 23.8974 25.2466 24.5564 26.4257L26.0688 29.1564C25.8911 29.1433 25.712 29.1347 25.5307 29.1347H8.20639C8.02305 29.1347 7.84198 29.1435 7.66232 29.157L9.17627 26.4282ZM29.313 42.8235C29.313 43.2385 28.9753 43.5762 28.5603 43.5762H28.2757C27.8607 43.5762 27.523 43.2385 27.523 42.8235V42.3638C27.523 41.5563 26.8685 40.9018 26.061 40.9018H22.9618L20.908 38.8783C20.5727 38.5479 20.0359 38.3523 19.4646 38.3523H14.3433C13.7549 38.3523 13.2045 38.5596 12.8721 38.9064L10.9597 40.9018H7.67605C6.86854 40.9018 6.21408 41.5563 6.21408 42.3638V42.6811C6.21408 43.1747 5.81261 43.5762 5.31901 43.5762C4.8254 43.5762 4.42393 43.1747 4.42393 42.6811V35.3625C4.42393 33.5408 6.1208 32.0586 8.20639 32.0586H25.5307C27.6163 32.0586 29.313 33.5223 29.313 35.3214L29.313 42.8235Z" fill="black"/>
+                            <path d="M25.2107 38.3049C26.169 38.0787 26.7625 37.1184 26.5362 36.1601C26.31 35.2018 25.3498 34.6083 24.3914 34.8345C23.4331 35.0607 22.8396 36.021 23.0659 36.9793C23.2921 37.9376 24.2524 38.5311 25.2107 38.3049Z" fill="black"/>
+                            <path d="M8.84539 38.3519C9.83005 38.3519 10.6283 37.5537 10.6283 36.569C10.6283 35.5844 9.83005 34.7861 8.84539 34.7861C7.86073 34.7861 7.0625 35.5844 7.0625 36.569C7.0625 37.5537 7.86073 38.3519 8.84539 38.3519Z" fill="black"/>
+                            <path d="M44.8095 18.7404C44.7911 18.698 44.7709 18.656 44.7481 18.6148L41.3747 12.5236C40.1865 10.3977 37.8437 9.07715 35.2607 9.07715H26.9997C24.4189 9.07715 22.0771 10.396 20.8853 12.5242L19.3595 15.2741C18.968 15.9802 19.2227 16.8701 19.9287 17.2619C20.6348 17.6534 21.5245 17.3986 21.9165 16.6927L23.4393 13.9479C24.1016 12.7652 25.499 12.0011 26.9997 12.0011H35.2607C36.7625 12.0011 38.1607 12.7661 38.8195 13.9452L40.3317 16.6759C40.1541 16.6628 39.9752 16.6542 39.794 16.6542H26.8753C26.0678 16.6542 25.4134 17.3087 25.4134 18.1162C25.4134 18.9237 26.0678 19.5782 26.8753 19.5782H39.794C41.8795 19.5782 43.5762 21.0419 43.5762 22.8409V30.343C43.5762 30.758 43.2385 31.0957 42.8235 31.0957H42.5389C42.1238 31.0957 41.7861 30.758 41.7861 30.343V29.8833C41.7861 29.0758 41.1316 28.4214 40.3241 28.4214H35.4671C34.6596 28.4214 34.0051 29.0758 34.0051 29.8833C34.0051 30.6908 34.6596 31.3453 35.4671 31.3453H39.0009C39.4384 32.887 40.8588 34.0197 42.5389 34.0197H42.8235C44.8509 34.0197 46.5001 32.3704 46.5001 30.343V22.8409C46.5001 21.2689 45.8603 19.8329 44.8095 18.7404Z" fill="black"/>
+                            <path d="M6.52837 19.6676C7.33588 19.6676 7.99034 19.0131 7.99034 18.2056V15.3049C7.99034 13.4832 9.68721 12.0012 11.7728 12.0012H16.1558C16.9633 12.0012 17.6178 11.3468 17.6178 10.5393C17.6178 9.73174 16.9633 9.07729 16.1558 9.07729H11.7728C11.5894 9.07729 11.4083 9.08607 11.2285 9.09955L12.7427 6.37055C13.4048 5.18804 14.8022 4.42393 16.3028 4.42393H24.5639C25.6413 4.42393 26.6039 4.72089 27.2742 5.2598C27.9035 5.76616 28.8235 5.66622 29.3295 5.03689C29.8357 4.40775 29.7359 3.48755 29.1066 2.98157C27.919 2.02616 26.3057 1.5 24.5639 1.5H16.3028C13.7221 1.5 11.3803 2.81901 10.1886 4.94704L6.83942 10.9832C6.80255 11.0497 6.77326 11.1181 6.74768 11.1873C5.70259 12.2858 5.06641 13.7273 5.06641 15.3049V18.2056C5.06641 19.0131 5.72087 19.6676 6.52837 19.6676Z" fill="black"/>
+                            <path d="M12.8201 18.2473C13.7784 18.0211 14.3719 17.0608 14.1456 16.1025C13.9194 15.1441 12.9591 14.5507 12.0008 14.7769C11.0425 15.0031 10.449 15.9634 10.6752 16.9217C10.9015 17.88 11.8617 18.4735 12.8201 18.2473Z" fill="black"/>
+                            <path d="M40.847 24.3561C40.847 23.3714 40.0488 22.5732 39.0642 22.5732C38.0795 22.5732 37.2812 23.3714 37.2812 24.3561C37.2812 25.3408 38.0795 26.139 39.0642 26.139C40.0489 26.139 40.847 25.3408 40.847 24.3561Z" fill="black"/>
+                        </svg>
+                        <span class="text-bold-700-20 text-black-custom">Новейший автопарк</span>
+                        <span class="text-regular-400-18 text-gray-custom">Все машины не старше 2022 года</span>
+                    </div>
+                </div>
+            </section>
+            <a id="forms-education-anchor"></a>
+            <section class="sm:pt-24 pt-14">
+                <h2 class="pt-6 text-bold-700-32-44L sm:text-h2 text-start pb-10 mx-4 sm:mx-auto">Форма обучения</h2>
+                <div class="flex md-custom:flex-row flex-col gap-x-1 gap-y-1 select-none">
+                    <div class="rounded-3xl bg-gray-light-custom w-full p-8 flex flex-col group hover:bg-lime-custom">
+                        <div class="flex flex-row justify-between">
+                            <svg class="m-2" width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="88" height="88" rx="44" fill="white"/>
+                                <path d="M65.757 62.3737C65.7488 62.3528 65.74 62.3322 65.7307 62.3118L61.0143 52.0444V35.4528H63.4297C64.7642 35.4528 65.8499 34.367 65.8499 33.0323V24.483C65.8499 23.1483 64.7642 22.0625 63.4297 22.0625H48.0592C46.7246 22.0625 45.6389 23.1483 45.6389 24.483V29.0575H29.4073C28.0728 29.0575 26.987 30.1433 26.987 31.478V52.0443L22.2669 62.3116C22.2575 62.332 22.2487 62.3528 22.2405 62.3737C21.9274 63.179 22.0317 64.0856 22.5195 64.7988C23.0072 65.5118 23.8143 65.9375 24.6783 65.9375H63.3192C64.1832 65.9375 64.9902 65.5118 65.478 64.7988C65.9658 64.0856 66.0701 63.179 65.757 62.3737ZM47.8889 24.483C47.8889 24.389 47.9653 24.3125 48.0592 24.3125H63.4297C63.5235 24.3125 63.5999 24.389 63.5999 24.483V33.0323C63.5999 33.1263 63.5235 33.2028 63.4297 33.2028H52.2904C52.0795 33.2028 51.8729 33.2621 51.6941 33.3738L47.8889 35.7522L47.8889 24.483ZM29.237 31.478C29.237 31.384 29.3134 31.3075 29.4073 31.3075H45.6389V37.7821C45.6389 38.1912 45.8608 38.5678 46.2185 38.7661C46.3884 38.8602 46.5763 38.9071 46.7639 38.9071C46.9712 38.9071 47.1781 38.8498 47.3602 38.7361L52.613 35.4528H58.7643V51.1655H29.237V31.478ZM39.3066 63.6875L40.3414 60.3242H47.66L48.6947 63.6875H39.3066ZM63.621 63.5284C63.5803 63.5877 63.487 63.6875 63.3192 63.6875H51.0489L49.5662 58.8683C49.4209 58.3963 48.9849 58.0742 48.491 58.0742H39.5105C39.0165 58.0742 38.5805 58.3963 38.4352 58.8683L36.9524 63.6875H24.6783C24.5105 63.6875 24.4172 63.5877 24.3765 63.5284C24.3378 63.4716 24.2822 63.3572 24.3298 63.2111L28.833 53.4155H59.168L63.6677 63.2109C63.7153 63.357 63.6597 63.4716 63.621 63.5284ZM40.0326 41.701C40.6217 41.0192 40.9808 40.1335 40.9808 39.1638C40.9808 37.0197 39.2365 35.2754 37.0925 35.2754C34.9486 35.2754 33.2044 37.0197 33.2044 39.1638C33.2044 40.1335 33.5634 41.0192 34.1525 41.701C32.7481 42.6487 31.8228 44.2546 31.8228 46.0726V47.4543C31.8228 48.0756 32.3265 48.5793 32.9478 48.5793H41.2374C41.8587 48.5793 42.3624 48.0756 42.3624 47.4543V46.0726C42.3624 44.2546 41.437 42.6487 40.0326 41.701ZM35.4544 39.1638C35.4544 38.2604 36.1893 37.5254 37.0925 37.5254C37.9959 37.5254 38.7308 38.2604 38.7308 39.1638C38.7308 40.0673 37.9959 40.8024 37.0925 40.8024C36.1893 40.8024 35.4544 40.0673 35.4544 39.1638ZM40.1124 46.3293H34.0728V46.0726C34.0728 44.4072 35.4275 43.0524 37.0925 43.0524C38.7577 43.0524 40.1124 44.4072 40.1124 46.0726V46.3293ZM51.1654 28.8008C51.1654 28.1795 51.6691 27.6758 52.2904 27.6758H59.1985C59.8198 27.6758 60.3235 28.1795 60.3235 28.8008C60.3235 29.4221 59.8198 29.9258 59.1985 29.9258H52.2904C51.6691 29.9258 51.1654 29.4221 51.1654 28.8008ZM45.6389 42.6183C45.6389 41.997 46.1426 41.4933 46.7639 41.4933H51.5995C52.2208 41.4933 52.7245 41.997 52.7245 42.6183C52.7245 43.2396 52.2208 43.7433 51.5995 43.7433H46.7639C46.1426 43.7433 45.6389 43.2396 45.6389 42.6183ZM55.4878 47.4543C55.4878 48.0756 54.9841 48.5793 54.3628 48.5793H46.7639C46.1426 48.5793 45.6389 48.0756 45.6389 47.4543C45.6389 46.833 46.1426 46.3293 46.7639 46.3293H54.3628C54.9841 46.3293 55.4878 46.833 55.4878 47.4543Z" fill="black"/>
+                            </svg>
+                            <div class="text-medium-500-16 bg-white rounded-3xl px-4 py-2 self-start h-min text-black-custom">Самый лучший вариант 👍</div>
+                        </div>
+                        <span class="text-bold-700-24 pt-4 pb-6 text-black-custom group-hover:text-white">Онлайн</span>
+                        <ul class="list-disc list-outside px-8 flex flex-col gap-y-2">
+                            <li class="text-regular-400-18 text-black-custom group-hover:text-white">Лекции проходят на специализированной платформе</li>
+                            <li class="text-regular-400-18 text-black-custom group-hover:text-white">Приглашения приходят на почту</li>
+                            <li class="text-regular-400-18 text-black-custom group-hover:text-white">После окончания теории водитель приедет в любую часть города для практики</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-3xl bg-gray-light-custom w-full p-8 flex flex-col group hover:bg-lime-custom">
+                        <span class="text-bold-700-24 pt-32 pb-6 text-black-custom group-hover:text-white">Очная</span>
+                        <ul class="list-disc list-outside px-8 flex flex-col gap-y-2">
+                            <li class="text-regular-400-18 text-black-custom group-hover:text-white">Просторные классы</li>
+                            <li class="text-regular-400-18 text-black-custom group-hover:text-white">Индивидуальный подход</li>
+                        </ul>
+                        <svg class="place-self-end" width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="88" height="88" rx="44" fill="white"/>
+                            <path d="M64.8125 58.8455H64.0365V58.7543C64.0365 56.4361 62.6643 54.4334 60.6901 53.5126C61.1128 52.8903 61.3603 52.1397 61.3603 51.3323C61.3603 49.187 59.6149 47.4417 57.4695 47.4417C57.4129 47.4417 57.3578 47.4478 57.3018 47.4502V44.4479H59.6313C60.2525 44.4479 60.7563 43.9442 60.7563 43.3229C60.7563 42.7016 60.2525 42.1979 59.6313 42.1979H50.5656V42.1067C50.5656 40.7778 50.1137 39.553 49.3571 38.5755H60.3329C60.9542 38.5755 61.4579 38.0718 61.4579 37.4505V23.1875C61.4579 22.5662 60.9542 22.0625 60.3329 22.0625H27.6645C27.0432 22.0625 26.5395 22.5662 26.5395 23.1875V37.4505C26.5395 38.0718 27.0432 38.5755 27.6645 38.5755H38.6429C37.8863 39.553 37.4344 40.7778 37.4344 42.1067V42.1979H28.3687C27.7474 42.1979 27.2437 42.7016 27.2437 43.3229C27.2437 43.9442 27.7474 44.4479 28.3687 44.4479H30.6982V47.4504C30.6404 47.4479 30.5836 47.4417 30.5252 47.4417C28.3798 47.4417 26.6344 49.187 26.6344 51.3323C26.6344 52.1401 26.8822 52.891 27.3053 53.5136C25.3321 54.4347 23.9608 56.4369 23.9608 58.7543V58.8455H23.1875C22.5662 58.8455 22.0625 59.3492 22.0625 59.9705V64.8125C22.0625 65.4338 22.5662 65.9375 23.1875 65.9375H64.8125C65.4338 65.9375 65.9375 65.4338 65.9375 64.8125V59.9705C65.9375 59.3492 65.4338 58.8455 64.8125 58.8455ZM61.7865 58.7543V58.8455H53.1552V58.7543C53.1552 56.8071 54.7393 55.2231 56.6865 55.2231H58.2552C60.2024 55.2231 61.7865 56.8071 61.7865 58.7543ZM59.1103 51.3323C59.1103 52.237 58.3742 52.9731 57.4695 52.9731C56.5648 52.9731 55.8287 52.237 55.8287 51.3323C55.8287 50.4276 56.5648 49.6917 57.4695 49.6917C58.3742 49.6917 59.1103 50.4276 59.1103 51.3323ZM42.3579 34.6847C42.3579 33.78 43.094 33.0439 43.9987 33.0439C44.9034 33.0439 45.6394 33.78 45.6394 34.6847C45.6394 35.5894 44.9034 36.3255 43.9987 36.3255C43.094 36.3255 42.3579 35.5894 42.3579 34.6847ZM28.7895 24.3125H59.2079V36.3255H47.5216C47.7551 35.8261 47.8894 35.2714 47.8894 34.6847C47.8894 32.5392 46.1441 30.7939 43.9987 30.7939C41.8534 30.7939 40.1079 32.5392 40.1079 34.6847C40.1079 35.2714 40.2422 35.8261 40.4758 36.3255H28.7895V24.3125ZM39.6844 42.1067C39.6844 40.1595 41.2684 38.5755 43.2156 38.5755H44.7844C46.7316 38.5755 48.3156 40.1595 48.3156 42.1067V42.1979H39.6844L39.6844 42.1067ZM32.9482 44.4479H55.0518V48.2895C54.1558 49.0029 53.5787 50.1006 53.5787 51.3323C53.5787 52.1401 53.8265 52.891 54.2496 53.5136C52.2765 54.4347 50.9052 56.4369 50.9052 58.7543V58.8455H50.5643V58.7543C50.5643 56.4361 49.1922 54.4334 47.2179 53.5126C47.6406 52.8903 47.8882 52.1397 47.8882 51.3323C47.8882 49.187 46.1428 47.4417 43.9974 47.4417C41.8521 47.4417 40.1065 49.187 40.1065 51.3323C40.1065 52.1401 40.3544 52.891 40.7775 53.5136C38.8043 54.4347 37.4331 56.4369 37.4331 58.7543V58.8455H37.0922V58.7543C37.0922 56.4361 35.7199 54.4334 33.7457 53.5126C34.1684 52.8902 34.4159 52.1397 34.4159 51.3323C34.4159 50.103 33.8413 49.007 32.9482 48.2935L32.9482 44.4479ZM39.6831 58.8455V58.7543C39.6831 56.8071 41.2672 55.2231 43.2143 55.2231H44.7831C46.7303 55.2231 48.3143 56.8071 48.3143 58.7543V58.8455H39.6831ZM43.9974 52.9731C43.0926 52.9731 42.3565 52.237 42.3565 51.3323C42.3565 50.4275 43.0926 49.6916 43.9974 49.6916C44.9022 49.6916 45.6382 50.4275 45.6382 51.3323C45.6382 52.237 44.9022 52.9731 43.9974 52.9731ZM30.5252 49.6916C31.4299 49.6916 32.1659 50.4275 32.1659 51.3323C32.1659 52.237 31.4299 52.9731 30.5252 52.9731C29.6205 52.9731 28.8844 52.237 28.8844 51.3323C28.8844 50.4275 29.6205 49.6916 30.5252 49.6916ZM26.2108 58.7543C26.2108 56.8071 27.795 55.2231 29.7421 55.2231H31.3109C33.258 55.2231 34.8422 56.8071 34.8422 58.7543V58.8455H26.2108V58.7543ZM63.6875 63.6875H24.3125V61.0955H63.6875V63.6875Z" fill="black"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <a id="autopark-anchor"></a>
+        <div class="sm:mt-24 mt-14">
+            <section class="flex flex-col p-1">
+                <div class="flex flex-row justify-between">
+                    <h2 class="sm:text-h2 text-bold-700-32-44L text-start sm:pb-10 pb-8 sm:px-10 px-4">Наш автопарк</h2>
+                </div>
+                <div class="flex flex-col gap-y-8">
+                    <div id="carousel-0" class="main-carousel">
+                        <div class="carousel-cell rounded-3xl md-custom:w-1/2 lg-custom:w-1/4 flex">
+                            <img src="{{ url_for('static', path='/images/ap_1.png') }}">
+                        </div>
+                        <div class="carousel-cell rounded-3xl md-custom:w-1/2 lg-custom:w-1/4 flex px-1">
+                            <img src="{{ url_for('static', path='/images/ap_2.png') }}">
+                        </div>
+                        <div class="carousel-cell rounded-3xl md-custom:w-1/2 lg-custom:w-1/4 flex">
+                            <img src="{{ url_for('static', path='/images/ap_3.png') }}">
+                        </div>
+                        <div class="carousel-cell rounded-3xl md-custom:w-1/2 lg-custom:w-1/4 flex px-1">
+                            <img src="{{ url_for('static', path='/images/ap_4.png') }}">
+                        </div>
+                        <div class="carousel-cell rounded-3xl md-custom:w-1/2 lg-custom:w-1/4 flex">
+                            <img src="{{ url_for('static', path='/images/ap_4.png') }}">
+                        </div>
+                        <div class="carousel-cell rounded-3xl md-custom:w-1/2 lg-custom:w-1/4 flex px-1">
+                            <img src="{{ url_for('static', path='/images/ap_4.png') }}">
+                        </div>
+                        <div class="carousel-cell rounded-3xl md-custom:w-1/2 lg-custom:w-1/4 flex">
+                            <img src="{{ url_for('static', path='/images/ap_4.png') }}">
+                        </div>
+                        <div class="carousel-cell rounded-3xl md-custom:w-1/2 lg-custom:w-1/4 flex px-1">
+                            <img src="{{ url_for('static', path='/images/ap_4.png') }}">
+                        </div>
+                    </div>
+                    <div id="carousel-0-buttons" class="flex flex-row place-self-center">
+                        <svg id="prev-carousel-0" class="-mr-4 group cursor-pointer" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d_410_2485)">
+                            <rect class="group-hover:fill-lime-custom" width="48" height="48" rx="24" transform="matrix(-1 0 0 1 72 18)" fill="white"/>
+                            <path class="group-hover:fill-white" fill-rule="evenodd" clip-rule="evenodd" d="M51.233 33.3295C51.6723 33.7688 51.6723 34.4812 51.233 34.9205L45.6535 40.5L51.233 46.0795C51.6723 46.5188 51.6723 47.2312 51.233 47.6705C50.7937 48.1098 50.0813 48.1098 49.642 47.6705L43.267 41.2955C42.8277 40.8561 42.8277 40.1438 43.267 39.7045L49.642 33.3295C50.0813 32.8902 50.7937 32.8902 51.233 33.3295Z" fill="#323942"/>
+                            </g>
+                            <defs>
+                            <filter id="filter0_d_410_2485" x="0" y="0" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset dy="6"/>
+                            <feGaussianBlur stdDeviation="12"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0.196078 0 0 0 0 0.223529 0 0 0 0 0.258824 0 0 0 0.16 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_410_2485"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_410_2485" result="shape"/>
+                            </filter>
+                            </defs>
+                        </svg>
+                        <svg id="next-carousel-0" class="group cursor-pointer" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d_410_2486)">
+                            <rect class="group-hover:fill-lime-custom" x="24" y="18" width="48" height="48" rx="24" fill="white"/>
+                            <path class="group-hover:fill-white" fill-rule="evenodd" clip-rule="evenodd" d="M44.767 33.3295C44.3277 33.7688 44.3277 34.4812 44.767 34.9205L50.3465 40.5L44.767 46.0795C44.3277 46.5188 44.3277 47.2312 44.767 47.6705C45.2063 48.1098 45.9187 48.1098 46.358 47.6705L52.733 41.2955C53.1723 40.8561 53.1723 40.1438 52.733 39.7045L46.358 33.3295C45.9187 32.8902 45.2063 32.8902 44.767 33.3295Z" fill="#323942"/>
+                            </g>
+                            <defs>
+                            <filter id="filter0_d_410_2486" x="0" y="0" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset dy="6"/>
+                            <feGaussianBlur stdDeviation="12"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0.196078 0 0 0 0 0.223529 0 0 0 0 0.258824 0 0 0 0.16 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_410_2486"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_410_2486" result="shape"/>
+                            </filter>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <a id="howwork-anchor"></a>
+        <div class="sm:mt-24 mt-14 sm:mx-10">
+            <section class="bg-gray-light-custom sm:rounded-2xl p-4">
+                <h2 class="pt-6 sm:text-h2 text-bold-700-32-44L sm-custom:text-center sm:pb-10 pb-8">Как мы работаем</h2>
+                <div class="flex sm-custom:flex-row flex-col gap-y-1 gap-x-1">
+                    <div class="bg-white p-8 flex flex-col gap-y-2 rounded-3xl basis-1/3 min-h-[282px]">
+                        <span class="font-inter-regular opacity-10 font-light text-7xl pb-12">01</span>
+                        <span class="text-bold-700-20 text-black-custom">Оставить заявку</span>
+                        <span class="text-regular-400-18 text-gray-custom">Вы оставляете заявку на сайте, по телефону, в месенджерах, и мы вам перезваниваем</span>
+                    </div>
+                    <div class="bg-white p-8 flex flex-col gap-y-2 rounded-3xl basis-1/3 min-h-[282px]">
+                        <span class="font-inter-regular opacity-10 font-light text-7xl pb-12">02</span>
+                        <span class="text-bold-700-20 text-black-custom">Оплатить</span>
+                        <span class="text-regular-400-18 text-gray-custom">Заключение договора. Есть возможность оплаты в <span class="text-lime-custom">рассрочку</span></span>
+                    </div>
+                    <div class="bg-white p-8 flex flex-col gap-y-2 rounded-3xl basis-1/3 min-h-[282px]">
+                        <span class="font-inter-regular opacity-10 font-light text-7xl pb-12">03</span>
+                        <span class="text-bold-700-20 text-black-custom">Начать обучение</span>
+                        <span class="text-regular-400-18 text-gray-custom">Длительность обучения от 1,5 месяцев в зависимости от категории ТС и условий</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <a id="filials-anchor"></a>
+        <div class="sm:mt-24 mt-14 mx-10 hidden lg:block">
+            <section>
+                <h2 class="pt-6 text-h2 pb-14">Наши филиалы</h2>
+                <div class="flex flex-row gap-x-2">
+                    <div class="flex flex-col overflow-y-auto max-h-[511px] gap-y-4 py-4 px-8 bg-gray-light-custom basis-1/2 rounded-2xl">
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Пресненская набережная, 12</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Тверская улица, 9</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Проспект Мира, 78</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Ленинградский проспект, 31</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Профсоюзная улица, 56</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Варшавское шоссе, 125</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Ленинский проспект, 87</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Лубянская площадь, 7/1</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Большая Никитская улица, 22</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Кутузовский проспект, 57</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Профсоюзная улица, 112</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Новый Арбат, 19</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Третьяковская улица, 13</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Проспект Мира, 119</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Большой Татарский переулок, 3</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Варшавское шоссе, 1</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Ленинградский проспект, 37</div>
+                        <div class="text-regular-400-14 text-gray-custom hover:text-black-custom hover:bg-lime-light-custom cursor-pointer py-2 px-4 rounded-lg">Адрес: Новый Арбат, 15</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <iframe
+                        class="rounded-2xl basis-1/2"
+                        src="https://yandex.ru/map-widget/v1/?um=constructor%3A384fb7e13c18e1fc3fe58ae3ad8e2afcb366ad179a56ba6f7ecee7651b5e6536&amp;source=constructor"
+                        width="588"
+                        height="502"
+                        frameborder="0">
+                    </iframe>
+                </div>
+            </section>
+        </div>
+        <a id="instructors-anchor"></a>
+        <div class="sm-custom:mt-24 mt-12 ml-5 sm-custom:ml-10 flex flex-col">
+            <h2 class="text-bold-700-32-44L text-start pb-10 sm-custom:hidden inline-block">Наши инструктора</h2>
+            <section class="sm-custom-max:order-last">
+                <div class="flex flex-row justify-between sm-custom-max:justify-center">
+                    <h2 class="text-h2 text-start pb-10 px-10 sm-custom:px-0 hidden sm-custom:inline-block">Наши инструктора</h2>
+                    <div id="carousel-1-buttons" class="flex flex-row sm-custom-max:pt-8">
+                        <svg id="prev-carousel-1" class="-mr-4 group cursor-pointer" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d_410_2578)">
+                            <rect class="group-hover:fill-lime-custom" width="48" height="48" rx="24" transform="matrix(-1 0 0 1 72 18)" fill="white"/>
+                            <path class="group-hover:fill-white" fill-rule="evenodd" clip-rule="evenodd" d="M51.233 33.3295C51.6723 33.7688 51.6723 34.4812 51.233 34.9205L45.6535 40.5L51.233 46.0795C51.6723 46.5188 51.6723 47.2312 51.233 47.6705C50.7937 48.1098 50.0813 48.1098 49.642 47.6705L43.267 41.2955C42.8277 40.8561 42.8277 40.1438 43.267 39.7045L49.642 33.3295C50.0813 32.8902 50.7937 32.8902 51.233 33.3295Z" fill="#323942"/>
+                            </g>
+                            <defs>
+                            <filter id="filter0_d_410_2578" x="0" y="0" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset dy="6"/>
+                            <feGaussianBlur stdDeviation="12"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0.196078 0 0 0 0 0.223529 0 0 0 0 0.258824 0 0 0 0.16 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_410_2578"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_410_2578" result="shape"/>
+                            </filter>
+                            </defs>
+                        </svg>
+                        <svg id="next-carousel-1" class="group cursor-pointer" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d_410_2579)">
+                            <rect class="group-hover:fill-lime-custom" x="24" y="18" width="48" height="48" rx="24" fill="white"/>
+                            <path class="group-hover:fill-white" fill-rule="evenodd" clip-rule="evenodd" d="M44.767 33.3295C44.3277 33.7688 44.3277 34.4812 44.767 34.9205L50.3465 40.5L44.767 46.0795C44.3277 46.5188 44.3277 47.2312 44.767 47.6705C45.2063 48.1098 45.9187 48.1098 46.358 47.6705L52.733 41.2955C53.1723 40.8561 53.1723 40.1438 52.733 39.7045L46.358 33.3295C45.9187 32.8902 45.2063 32.8902 44.767 33.3295Z" fill="#323942"/>
+                            </g>
+                            <defs>
+                            <filter id="filter0_d_410_2579" x="0" y="0" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset dy="6"/>
+                            <feGaussianBlur stdDeviation="12"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0.196078 0 0 0 0 0.223529 0 0 0 0 0.258824 0 0 0 0.16 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_410_2579"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_410_2579" result="shape"/>
+                            </filter>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+            <section class="flex flex-row gap-x-16">
+                <div class="basis-2/5 xl:flex flex-row hidden">
+                    <div class="pt-20 px-10 flex flex-col gap-y-4">
+                        <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
+                        <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
+                        <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
+                    </div>
+                    <div class="rounded-[32px] max-w-[272px]">
+                        <img src="{{ url_for('static', path='/images/random_man.png') }}">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-y-8 xl:basis-3/5 basis-full">
+                    <div id="carousel-1" class="main-carousel">
+                        <div class="carousel-cell flex flex-col mx-6 rounded-[32px] max-w-[195px]">
+                            <img src="{{ url_for('static', path='/images/random_man.png') }}">
+                            <div class="basis-1/5 xl:hidden flex flex-col pt-10 gap-y-4">
+                                <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
+                                <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
+                                <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
+                            </div>
+                        </div>
+                        <div class="carousel-cell flex flex-col mx-6 rounded-[32px] max-w-[195px]">
+                            <img src="{{ url_for('static', path='/images/random_man.png') }}">
+                            <div class="basis-1/5 xl:hidden flex flex-col">
+                                <div class="flex pt-10 flex-col gap-y-4">
+                                    <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
+                                    <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
+                                    <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-cell flex flex-col mx-6 rounded-[32px] max-w-[195px]">
+                            <img src="{{ url_for('static', path='/images/random_man.png') }}">
+                            <div class="basis-1/5 xl:hidden flex flex-col pt-10 gap-y-4">
+                                <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
+                                <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
+                                <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
+                            </div>
+                        </div>
+                        <div class="carousel-cell flex flex-col mx-6 rounded-[32px] max-w-[195px]">
+                            <img src="{{ url_for('static', path='/images/random_man.png') }}">
+                            <div class="basis-1/5 xl:hidden flex flex-col pt-10 gap-y-4">
+                                <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
+                                <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
+                                <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
+                            </div>
+                        </div>
+                        <div class="carousel-cell flex flex-col mx-6 rounded-[32px] max-w-[195px]">
+                            <img src="{{ url_for('static', path='/images/random_man.png') }}">
+                            <div class="basis-1/5 xl:hidden flex flex-col pt-10 gap-y-4">
+                                <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
+                                <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
+                                <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
+                            </div>
+                        </div>
+                        <div class="carousel-cell flex flex-col mx-6 rounded-[32px] max-w-[195px]">
+                            <img src="{{ url_for('static', path='/images/random_man.png') }}">
+                            <div class="basis-1/5 xl:hidden flex flex-col pt-10 gap-y-4">
+                                <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
+                                <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
+                                <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
+                            </div>
+                        </div>
+                    </div>
+<!--                    <div class="flex flex-row gap-x-3 items-center" id="carousel-1-indicators">-->
+<!--                        <svg data-carousel-i="0" class="carousel-indicator hover:w-5 hover:h-5 group cursor-pointer" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                            <circle class="group-hover:fill-lime-custom" cx="8" cy="8" r="8" fill="#E1E1E1"/>-->
+<!--                        </svg>-->
+<!--                        <svg data-carousel-i="1" class="carousel-indicator hover:w-5 hover:h-5 group cursor-pointer" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                            <circle class="group-hover:fill-lime-custom" cx="8" cy="8" r="8" fill="#E1E1E1"/>-->
+<!--                        </svg>-->
+<!--                    </div>-->
+                </div>
+            </section>
+        </div>
+        <a id="installment-anchor"></a>
+        <div class="sm:mt-24 mt-14">
+            <section class="flex flex-row sm:py-16 py-10 lg-custom:pl-10 pl-4 lg-custom:pr-24 pr-8 bg-gray-light-custom lg-custom:gap-x-28">
+                <div class="bg-gray-medium-custom basis-1/2 rounded-[48px] lg-custom:flex hidden">
+                    <img src="{{ url_for('static', path='/images/car.png') }}">
+                </div>
+                <div class="flex flex-col sm:pt-12 pt-0 lg-custom-max:w-full">
+                    <h2 class="sm-custom:text-h2 text-bold-700-32-44L text-black-custom pb-10 sm-custom:pl-8">Как оформить рассрочку</h2>
+                    <div class="lg-custom:block hidden">
+                        <div class="flex flex-col gap-y-10 select-none">
+                            <div class="flex flex-row group">
+                                <svg class="h-full flex-none" width="16" viewBox="0 0 16 118" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="group-hover:stroke-lime-custom" cx="8" cy="8" r="6.5" fill="white" stroke="#E9ECED" stroke-width="3" stroke-linecap="square"/>
+                                    <rect class="h-full" x="7" y="16" width="2" fill="#E9ECED"/>
+                                </svg>
+                                <div class="flex flex-col gap-y-2 pl-4 -mt-2">
+                                    <span class="text-bold-700-18 text-black-custom group-hover:text-lime-custom">Заполнение заявки</span>
+                                    <span class="text-regular-400-16 text-black-custom group-hover:text-lime-custom">необходимо указать личные данные, данные о доходах и расходах</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-y-10 select-none">
+                            <div class="flex flex-row group">
+                                <svg class="h-full flex-none" width="16" viewBox="0 0 16 118" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="group-hover:stroke-lime-custom" cx="8" cy="8" r="6.5" fill="white" stroke="#E9ECED" stroke-width="3" stroke-linecap="square"/>
+                                    <rect class="h-full" x="7" y="16" width="2" fill="#E9ECED"/>
+                                </svg>
+                                <div class="flex flex-col gap-y-2 pl-4 -mt-2">
+                                    <span class="text-bold-700-18 text-black-custom group-hover:text-lime-custom">Ожидание решения по заявке</span>
+                                    <span class="text-regular-400-16 text-black-custom group-hover:text-lime-custom">Обычно это занимает несколько минут.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-y-10 select-none">
+                            <div class="flex flex-row group">
+                                <svg class="h-full flex-none" width="16" viewBox="0 0 16 118" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="group-hover:stroke-lime-custom" cx="8" cy="8" r="6.5" fill="white" stroke="#E9ECED" stroke-width="3" stroke-linecap="square"/>
+                                </svg>
+                                <div class="flex flex-col gap-y-2 pl-4 -mt-2">
+                                    <span class="text-bold-700-18 text-black-custom group-hover:text-lime-custom">Получение решения по заявке</span>
+                                    <span class="text-regular-400-16 text-black-custom group-hover:text-lime-custom">Если заявка одобрена, покупатель получает информацию о сроке рассрочки и других условиях</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="carousel-6" class="carousel-main block lg-custom:hidden lg-custom:pl-5 sm-custom:pl-9">
+                        <div class="carousel-cell flex flex-col gap-y-8 select-none">
+                            <div class="flex flex-col gap-y-2">
+                                <span class="text-bold-700-18 text-lime-custom">Заполнение заявки</span>
+                                <span class="text-regular-400-16 text-lime-custom">необходимо указать личные данные, данные о доходах и расходах</span>
+                            </div>
+                            <div class="rounded-[48px] max-h-[348px]">
+                                <img src="{{ url_for('static', path='/images/car.png') }}">
+                            </div>
+                        </div>
+                        <div class="carousel-cell flex flex-col gap-y-8 select-none mx-5">
+                            <div class="flex flex-col gap-y-2">
+                                <span class="text-bold-700-18 text-lime-custom">Ожидание решения по заявке</span>
+                                <span class="text-regular-400-16 text-lime-custom">Обычно это занимает несколько минут.</span>
+                            </div>
+                            <div class="rounded-[48px] max-h-[348px]">
+                                <img src="{{ url_for('static', path='/images/car.png') }}">
+                            </div>
+                        </div>
+                        <div class="carousel-cell flex flex-col gap-y-8 select-none">
+                            <div class="flex flex-col gap-y-2">
+                                <span class="text-bold-700-18 text-lime-custom">Получение решения по заявке</span>
+                                <span class="text-regular-400-16 text-lime-custom">Если заявка одобрена, покупатель получает информацию о сроке рассрочки и других условиях</span>
+                            </div>
+                            <div class="rounded-[48px] max-h-[348px]">
+                                <img src="{{ url_for('static', path='/images/car.png') }}">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px sm-custom:w-4/5 w-full sm-custom:ml-8 sm-custom-max:mt-6 mt-10 place-self-center" type="button">Оставить заявку</button>
+                </div>
+            </section>
+        </div>
+        <a id="rates-anchor"></a>
+        <div class="mt-24 w-screen bg-gradient-to-b from-black-custom to-gray-400">
+            <section class="flex flex-col gap-x-4 px-28 pt-14 pb-12 sm-custom-max:px-5 select-none">
+                <h2 class="sm-custom-max:text-bold-700-32-44L text-h2 text-white pb-10">Отзывы</h2>
+                <span class="text-regular-400-16 text-white">95% наших инструкторов получают оценку 5 звезд после завершения работы</span>
+            </section>
+            <section class="flex flex-col sm-custom-max:pr-5">
+                <div id="carousel-2" class="main-carousel">
+                    <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
+                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <div class="flex flex-row gap-x-4">
+                            <div class="w-10 place-self-center">
+                                <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
+                            </div>
+                            <div class="flex flex-col gap-y-2">
+                                <span class="text-regular-400-16 text-black-custom">Ибрагим Бабахович</span>
+                                <div class="flex flex-row">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                    </svg>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                    </svg>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                    </svg>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                    </svg>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
+                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <div class="flex flex-row gap-x-4">
+                                <div class="w-10 place-self-center">
+                                    <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
+                                </div>
+                                <div class="flex flex-col gap-y-2">
+                                    <span class="text-regular-400-16 text-black-custom">Ибрагим Бабахович</span>
+                                    <div class="flex flex-row">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
+                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <div class="flex flex-row gap-x-4">
+                                <div class="w-10 place-self-center">
+                                    <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
+                                </div>
+                                <div class="flex flex-col gap-y-2">
+                                    <span class="text-regular-400-16 text-black-custom">Ибрагим Бабахович</span>
+                                    <div class="flex flex-row">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
+                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <div class="flex flex-row gap-x-4">
+                                <div class="w-10 place-self-center">
+                                    <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
+                                </div>
+                                <div class="flex flex-col gap-y-2">
+                                    <span class="text-regular-400-16 text-black-custom">Ибрагим Бабахович</span>
+                                    <div class="flex flex-row">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
+                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <div class="flex flex-row gap-x-4">
+                                <div class="w-10 place-self-center">
+                                    <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
+                                </div>
+                                <div class="flex flex-col gap-y-2">
+                                    <span class="text-regular-400-16 text-black-custom">Ибрагим Бабахович</span>
+                                    <div class="flex flex-row">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
+                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <div class="flex flex-row gap-x-4">
+                                <div class="w-10 place-self-center">
+                                    <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
+                                </div>
+                                <div class="flex flex-col gap-y-2">
+                                    <span class="text-regular-400-16 text-black-custom">Ибрагим Бабахович</span>
+                                    <div class="flex flex-row">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
+                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <div class="flex flex-row gap-x-4">
+                                <div class="w-10 place-self-center">
+                                    <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
+                                </div>
+                                <div class="flex flex-col gap-y-2">
+                                    <span class="text-regular-400-16 text-black-custom">Ибрагим Бабахович</span>
+                                    <div class="flex flex-row">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
+                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <div class="flex flex-row gap-x-4">
+                                <div class="w-10 place-self-center">
+                                    <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
+                                </div>
+                                <div class="flex flex-col gap-y-2">
+                                    <span class="text-regular-400-16 text-black-custom">Ибрагим Бабахович</span>
+                                    <div class="flex flex-row">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
+                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <div class="flex flex-row gap-x-4">
+                                <div class="w-10 place-self-center">
+                                    <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
+                                </div>
+                                <div class="flex flex-col gap-y-2">
+                                    <span class="text-regular-400-16 text-black-custom">Ибрагим Бабахович</span>
+                                    <div class="flex flex-row">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 0L10.4721 5.10228L16 5.92047L12 9.89205L12.9443 15.5L8 12.8523L3.05573 15.5L4 9.89205L0 5.92047L5.52786 5.10228L8 0Z" fill="#FFCE51"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div id="carousel-2-buttons" class="flex flex-row place-self-center mt-8">
+                    <svg id="prev-carousel-2" class="-mr-4 group cursor-pointer" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_d_410_2485)">
+                        <rect class="group-hover:fill-lime-custom" width="48" height="48" rx="24" transform="matrix(-1 0 0 1 72 18)" fill="white"/>
+                        <path class="group-hover:fill-white" fill-rule="evenodd" clip-rule="evenodd" d="M51.233 33.3295C51.6723 33.7688 51.6723 34.4812 51.233 34.9205L45.6535 40.5L51.233 46.0795C51.6723 46.5188 51.6723 47.2312 51.233 47.6705C50.7937 48.1098 50.0813 48.1098 49.642 47.6705L43.267 41.2955C42.8277 40.8561 42.8277 40.1438 43.267 39.7045L49.642 33.3295C50.0813 32.8902 50.7937 32.8902 51.233 33.3295Z" fill="#323942"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_410_2485" x="0" y="0" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="6"/>
+                        <feGaussianBlur stdDeviation="12"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.196078 0 0 0 0 0.223529 0 0 0 0 0.258824 0 0 0 0.16 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_410_2485"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_410_2485" result="shape"/>
+                        </filter>
+                        </defs>
+                    </svg>
+                    <svg id="next-carousel-2" class="group cursor-pointer" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_d_410_2486)">
+                        <rect class="group-hover:fill-lime-custom" x="24" y="18" width="48" height="48" rx="24" fill="white"/>
+                        <path class="group-hover:fill-white" fill-rule="evenodd" clip-rule="evenodd" d="M44.767 33.3295C44.3277 33.7688 44.3277 34.4812 44.767 34.9205L50.3465 40.5L44.767 46.0795C44.3277 46.5188 44.3277 47.2312 44.767 47.6705C45.2063 48.1098 45.9187 48.1098 46.358 47.6705L52.733 41.2955C53.1723 40.8561 53.1723 40.1438 52.733 39.7045L46.358 33.3295C45.9187 32.8902 45.2063 32.8902 44.767 33.3295Z" fill="#323942"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_410_2486" x="0" y="0" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="6"/>
+                        <feGaussianBlur stdDeviation="12"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.196078 0 0 0 0 0.223529 0 0 0 0 0.258824 0 0 0 0.16 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_410_2486"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_410_2486" result="shape"/>
+                        </filter>
+                        </defs>
+                    </svg>
+                </div>
+            </section>
+        </div>
+        {% include 'components/footer.html' %}
+    </body>
+</html>
