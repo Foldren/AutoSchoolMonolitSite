@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  bot:
+    build: .
+    image: site-autoschool
+    container_name: SITE__Autoschool.fast-api
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - /home/.VOLUMES/SITE__AutoSchool.fast-api/source:/source:rw
+    tty: true
+    working_dir: /source
+    ports:
+      - "4444:4444"
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "4444"]
