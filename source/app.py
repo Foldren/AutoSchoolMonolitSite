@@ -6,8 +6,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi import Request
 from fastapi_mail import MessageSchema, MessageType, FastMail
-
-from source.settings import mail_conf
+from settings import mail_conf
 
 app = FastAPI()
 
