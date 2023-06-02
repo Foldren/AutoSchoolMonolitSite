@@ -27,6 +27,7 @@ generate_carousel_flick(
             "groupCells": '100%',
             "initialIndex": 0,
             "pageDots": false,
+            "cellAlign": 'left',
     },
     {blur: false, s_prev:'#prev-carousel-0', s_next: '#next-carousel-0'}
 

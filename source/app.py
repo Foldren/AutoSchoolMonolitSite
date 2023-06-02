@@ -6,7 +6,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi import Request
 from fastapi_mail import MessageSchema, MessageType, FastMail
-from settings import mail_conf
+from settings import MAIL_CONF, STATIC_DIR
 
 app = FastAPI()
 
@@ -18,7 +18,13 @@ templates = Jinja2Templates(directory=path.join(this_directory, "templates"))
 
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
-    return templates.TemplateResponse("main.html", {"request": request})
+    return templates.TemplateResponse(
+        name="main.html",
+        context={
+            "request": request,
+            "static_dir": STATIC_DIR
+        }
+    )
 
 
 @app.post("/send-application")
@@ -36,7 +42,7 @@ async def send_mail(username: Annotated[str, Form()], phone: Annotated[str, Form
         subtype=MessageType.html
     )
 
-    fm = FastMail(mail_conf)
+    fm = FastMail(MAIL_CONF)
     await fm.send_message(message)
 
     return 1

@@ -3,11 +3,20 @@
   <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript" >
-     (function(m,e,t,r,i,k,a){m[i]=m[i]function(){(m[i].a=m[i].a[]).push(arguments)};
-     m[i].l=1*new Date();
-     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+     (function(m,e,t,r,i,k,a) {m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+         m[i].l=1*new Date();
+         for (var j = 0; j < document.scripts.length; j++) {
+             if (document.scripts[j].src === r) {
+                 return;
+             }
+         }
+         k=e.createElement(t),
+         a=e.getElementsByTagName(t)[0],
+         k.async=1,
+         k.src=r,
+         a.parentNode.insertBefore(k,a)
+     })
+         (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
      ym(93763831, "init", {
           clickmap:true,
@@ -37,13 +46,13 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Обучение в автошколе в Москве: станьте уверенным водителем с нами">
   <meta property="og:description" content="Хотите получить качественное обучение в автошколе в Москве? Присоединяйтесь\
-   к нам и станьте уверенным водителем. Мы предлагаем индивидуальный подход, опытных инструкторов и современные автомобили.\
+    к нам и станьте уверенным водителем. Мы предлагаем индивидуальный подход, опытных инструкторов и современные автомобили.\
     Запишитесь на курсы уже сегодня!">
   <meta property="og:url" content=https://schoolselect.ru>
   <!-- Meta tags -->
 
-  <link rel="stylesheet" href="//schoolselect.ru/source/static/css/main.css">
-  <link rel="stylesheet" href="//schoolselect.ru/source/static/css/fonts.css">
-  <link rel="stylesheet" href="//schoolselect.ru/source/static/css/output.css">
-  <link rel="stylesheet" href="//schoolselect.ru/source/static/plugins/flickity/flickity.css">
+  <link rel="stylesheet" href="{{ static_dir }}/css/main.css">
+  <link rel="stylesheet" href="{{ static_dir }}/css/fonts.css">
+  <link rel="stylesheet" href="{{ static_dir }}/css/output.css">
+  <link rel="stylesheet" href="{{ static_dir }}/plugins/flickity/flickity.css">
 </head>
