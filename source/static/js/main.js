@@ -11,7 +11,7 @@ const alert = generate_alert('#target_a', '#trigger_a')
 
 set_form_ajax_listener(
     "#send-application",
-    window.location.href+"send-application",
+    "/send-application",
     "#send-application-btn",
     {success_f: function() {
         $("#close-modal").click()
