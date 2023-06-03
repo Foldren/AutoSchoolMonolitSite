@@ -8,10 +8,10 @@ import {generate_alert, show_alert} from "/source/static/plugins/alert/alert.js"
 
 
 const alert = generate_alert('#target_a', '#trigger_a')
-alert(window.location.host)
+
 set_form_ajax_listener(
     "#send-application",
-    window.location.host+"/send-application",
+    window.location.href+"send-application",
     "#send-application-btn",
     {success_f: function() {
         $("#close-modal").click()
