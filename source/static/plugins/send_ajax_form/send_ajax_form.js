@@ -6,7 +6,6 @@ export function set_form_ajax_listener(s_form, url, s_submit_btn, {success_f = n
             $(s_submit_btn).attr("disabled","disabled")
             $("#spinner_1").toggleClass('hidden')
             $(s_submit_btn).toggleClass("btn-load-custom btn-custom")
-            console.log($(s_submit_btn))
 
             $.ajax({
                 url: url,
