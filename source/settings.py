@@ -11,6 +11,7 @@ MAIL_CONF = ConnectionConfig(
     MAIL_FROM_NAME="Уведомления SchoolSelect",
     MAIL_STARTTLS=False,
     MAIL_SSL_TLS=True,
+    VALIDATE_CERTS=False,
 )
 IS_LOCAL = "Pycharm" in getcwd()
 STATIC_DIR = '/source/static' if IS_LOCAL else '//schoolselect.ru/source/static'
