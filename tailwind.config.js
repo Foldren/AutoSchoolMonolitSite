@@ -34,6 +34,9 @@ module.exports = {
               'notosans-bold': ["NotoSans-Bold", 'sans-serif'],
               'inter-regular': ["Inter-Regular", 'sans-serif'],
           },
+          opacity: {
+              '23': '.23',
+          }
       },
       container: {
           center: true,

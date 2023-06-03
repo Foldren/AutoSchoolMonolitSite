@@ -4,14 +4,18 @@ import {generate_collapse} from "/source/static/plugins/collapse/collapse.js";
 import {generate_modal} from "/source/static/plugins/modal/modal.js";
 import {activate_empty_forms} from "/source/static/plugins/required-empty-form/required-empty-form.js";
 import {set_form_ajax_listener} from "/source/static/plugins/send_ajax_form/send_ajax_form.js";
+import {generate_alert, show_alert} from "/source/static/plugins/alert/alert.js";
 
+
+const alert = generate_alert('#target_a', '#trigger_a')
 
 set_form_ajax_listener(
     "#send-application",
     "/send-application",
     "#send-application-btn",
-    {success_f: function(data) {
-        alert(1)
+    {success_f: function() {
+        $("#close-modal").click()
+        show_alert("#target_a", alert)
     }
 })
 

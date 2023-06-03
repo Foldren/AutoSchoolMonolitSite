@@ -16,7 +16,9 @@
     .btn-custom {
         @apply rounded-md h-14 bg-lime-custom hover:bg-lime-dark-custom
     }
-
+    .btn-load-custom {
+        @apply rounded-md h-14 bg-lime-dark-custom
+    }
     .text-nsans-bold-700-18px {
         @apply font-notosans-bold text-lg font-bold text-white;
     }
