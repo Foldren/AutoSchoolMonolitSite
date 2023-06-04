@@ -29,6 +29,7 @@ async def root(request: Request):
 
 @app.post("/send-application")
 async def send_mail(username: Annotated[str, Form()], phone: Annotated[str, Form()], politics: Annotated[bool, Form()]):
+    print("SEND")
     html = f"""
               <p>🦱 Имя клиента: {username}</p>
               <p>📞 Телефон клиента: {phone}</p><br>

@@ -11,7 +11,7 @@ const alert = generate_alert('#target_a', '#trigger_a')
 
 set_form_ajax_listener(
     "#send-application",
-    "http://89.108.65.219:4444/send-application",
+    "https://schoolselect.ru/send-application",
     "#send-application-btn",
     {success_f: function() {
         $("#close-modal").click()
