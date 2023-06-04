@@ -3,15 +3,14 @@ from fastapi_mail import ConnectionConfig
 
 
 MAIL_CONF = ConnectionConfig(
-    MAIL_USERNAME="schoolselectavtoshkola@gmail.com",
-    MAIL_PASSWORD="coeegulnrguxfrgb",
-    MAIL_FROM="schoolselectavtoshkola@gmail.com",
+    MAIL_USERNAME="Avtoshkolaselect@yandex.ru", #"schoolselectavtoshkola@gmail.com",
+    MAIL_PASSWORD="fszldwozgjhvukzf", #"coeegulnrguxfrgb",
+    MAIL_FROM="Avtoshkolaselect@yandex.ru", #"schoolselectavtoshkola@gmail.com",
     MAIL_PORT=465,
-    MAIL_SERVER="smtp.gmail.com",
-    MAIL_FROM_NAME="Уведомления SchoolSelect",
+    MAIL_SERVER="smtp.yandex.ru", #"smtp.gmail.com",
+    MAIL_FROM_NAME="schoolselect",
     MAIL_STARTTLS=False,
     MAIL_SSL_TLS=True,
-    MAIL_DEBUG=1,
 )
 IS_LOCAL = "Pycharm" in getcwd()
 STATIC_DIR = '/source/static' if IS_LOCAL else '//schoolselect.ru/source/static'
