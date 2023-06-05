@@ -3,11 +3,11 @@ from fastapi_mail import ConnectionConfig
 
 
 MAIL_CONF = ConnectionConfig(
-    MAIL_USERNAME="Avtoshkolaselect@yandex.ru", #"schoolselectavtoshkola@gmail.com",
-    MAIL_PASSWORD="fszldwozgjhvukzf", #"coeegulnrguxfrgb",
-    MAIL_FROM="Avtoshkolaselect@yandex.ru", #"schoolselectavtoshkola@gmail.com",
+    MAIL_USERNAME="schoolselectavtoshkola@gmail.com", #"Avtoshkolaselect@yandex.ru",
+    MAIL_PASSWORD="coeegulnrguxfrgb", #"fszldwozgjhvukzf",
+    MAIL_FROM="schoolselectavtoshkola@gmail.com", #"Avtoshkolaselect@yandex.ru",
     MAIL_PORT=465,
-    MAIL_SERVER="smtp.yandex.ru", #"smtp.gmail.com",
+    MAIL_SERVER="smtp.gmail.com", #"smtp.yandex.ru",
     MAIL_FROM_NAME="schoolselect",
     MAIL_STARTTLS=False,
     MAIL_SSL_TLS=True,
