@@ -26,6 +26,7 @@ module.exports = {
               'md-custom-max': {max: '992px'},
               'lg-custom': '1402px',
               'lg-custom-max': {max: '1402px'},
+              'xl-custom': '1440px',
           },
           fontFamily: {
               'notosans-regular': ["NotoSans-Regular", 'sans-serif'],

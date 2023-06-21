@@ -1514,6 +1514,10 @@ input[type="range"]::-ms-fill-lower {
   display: table;
 }
 
+.grid {
+  display: grid;
+}
+
 .contents {
   display: contents;
 }
@@ -1634,6 +1638,10 @@ input[type="range"]::-ms-fill-lower {
   max-height: 100%;
 }
 
+.max-h-\[162px\] {
+  max-height: 162px;
+}
+
 .min-h-\[282px\] {
   min-height: 282px;
 }
@@ -1649,6 +1657,10 @@ input[type="range"]::-ms-fill-lower {
 .min-h-max {
   min-height: -moz-max-content;
   min-height: max-content;
+}
+
+.min-h-\[192px\] {
+  min-height: 192px;
 }
 
 .\!w-screen {
@@ -2397,6 +2409,11 @@ input[type="range"]::-ms-fill-lower {
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+}
+
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .px-16 {
@@ -3201,6 +3218,11 @@ input[type="range"]::-ms-fill-lower {
 }
 
 @media (min-width: 790px) {
+  .sm-custom\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .sm-custom\:ml-10 {
     margin-left: 2.5rem;
   }
@@ -3369,5 +3391,16 @@ input[type="range"]::-ms-fill-lower {
 
   .lg-custom-max\:justify-between {
     justify-content: space-between;
+  }
+}
+
+@media (min-width: 1440px) {
+  .xl-custom\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .xl-custom\:w-\[1440px\] {
+    width: 1440px;
   }
 }

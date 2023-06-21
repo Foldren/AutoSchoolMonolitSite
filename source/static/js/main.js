@@ -7,6 +7,7 @@ import {set_form_ajax_listener} from "/source/static/plugins/send_ajax_form/send
 import {generate_alert, show_alert} from "/source/static/plugins/alert/alert.js";
 
 
+console.log(innerWidth)
 const alert = generate_alert('#target_a', '#trigger_a')
 
 set_form_ajax_listener(
@@ -79,7 +80,7 @@ generate_carousel_flick(
 )
 
 generate_accordion(
-    5,
+    4,
     1,
     {active_item: 1}
 )

@@ -43,7 +43,7 @@
         </div>
         {% include 'components/start_body.html' %}
         {% include 'components/navbar.html' %}
-        <div class="pt-28 sm:pt-40 px-4 sm:px-10">
+        <div class="pt-28 sm:pt-40 px-4 sm:px-10 xl-custom:w-[1440px] sm-custom:mx-auto">
             <section class="flex flex-row xl:bg-[url('/source/static/images/car.png')] bg-none bg-right-top bg-no-repeat">
                 <div class="flex flex-col sm:gap-y-14 gap-y-6 max-w-[709px] text-start">
                     <h1 class="hidden sm:inline-block font-notosans-regular text-7xl text-black-custom font-bold leading-[108px]">Доверьте свою безопасность профессионалам</h1>
@@ -54,7 +54,7 @@
             </section>
         </div>
         <a id="services-anchor"></a>
-        <div class="sm:mt-36 mt-14 mx-4 sm:mx-10">
+        <div class="sm:mt-36 mt-14 mx-4 sm:mx-10 xl-custom:w-[1440px] sm-custom:mx-auto">
             <section class="flex flex-col gap-y-10 pb-16">
                 <h2 class="text-bold-700-32-44L sm:text-h2 sm:text-center">Наши услуги</h2>
                 <div class="flex flex-row overflow-x-auto">
@@ -63,11 +63,9 @@
                     <input id="categoryB" name="category" class="peer/cB hidden" type="radio">
                     <label id="accordion-1-heading-2" for="categoryB" class="whitespace-nowrap category-car w-max peer-checked/cB:bg-black-custom peer-checked/cB:text-white">Категория B</label>
                     <input id="categoryC" name="category" class="peer/cC hidden" type="radio">
-                    <label id="accordion-1-heading-3" for="categoryC" class="whitespace-nowrap category-car w-max peer-checked/cC:bg-black-custom peer-checked/cC:text-white">Категория C</label>
-                    <input id="categoryD" name="category" class="peer/cD hidden" type="radio">
-                    <label id="accordion-1-heading-4" for="categoryD" class="whitespace-nowrap category-car w-max peer-checked/cD:bg-black-custom peer-checked/cD:text-white">Категория D</label>
+                    <label id="accordion-1-heading-3" for="categoryC" class="whitespace-nowrap category-car w-max peer-checked/cC:bg-black-custom peer-checked/cC:text-white">Категория C и D</label>
                     <input id="categoryRemake" name="category" class="peer/cR hidden" type="radio">
-                    <label id="accordion-1-heading-5" for="categoryRemake" class="category-car whitespace-nowrap peer-checked/cR:bg-black-custom peer-checked/cR:text-white">Восстановление навыков</label>
+                    <label id="accordion-1-heading-4" for="categoryRemake" class="category-car whitespace-nowrap peer-checked/cR:bg-black-custom peer-checked/cR:text-white">Восстановление навыков</label>
                 </div>
                 <hr class="h-px bg-gray-500 w-full -mt-10">
                 <div class="bg-lime-light-custom flex flex-row">
@@ -79,7 +77,9 @@
                 <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
                     <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А</span>
                     <span class="text-regular-400-14 pb-6 group-hover:text-white">Мотоциклы</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex justify-center py-12">
+                        <img class="max-h-[162px]" src="{{ url_for('static', path='/images/main/A.png') }}">
+                    </div>
                     <div class="flex flex-col pb-6">
                         <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
                         <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
@@ -90,7 +90,9 @@
                 <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
                     <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А1</span>
                     <span class="text-regular-400-14 pb-6 group-hover:text-white">Квадрациклы</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex justify-center py-12">
+                        <img class="max-h-[162px]" src="{{ url_for('static', path='/images/main/A1.png') }}">
+                    </div>
                     <div class="flex flex-col pb-6">
                         <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
                         <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
@@ -101,7 +103,9 @@
                 <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
                     <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А2</span>
                     <span class="text-regular-400-14 pb-6 group-hover:text-white">Багги</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <div class="flex justify-center py-12">
+                        <img class="max-h-[162px]" src="{{ url_for('static', path='/images/main/A2.png') }}">
+                    </div>
                     <div class="flex flex-col pb-6">
                         <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
                         <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
@@ -111,111 +115,86 @@
                 </div>
             </section>
             <section id="accordion-1-body-2" class="overflow-x-auto flex flex-row">
-                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
-                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А</span>
-                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Мотоциклы</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/4">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория В мкпп</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Коробка передач: механика</span>
+                    <div class="flex justify-center py-12">
+                        <img src="{{ url_for('static', path='/images/main/B.png') }}">
+                    </div>
                     <div class="flex flex-col pb-6">
-                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 26 000 ₽</span>
                         <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">10 практических занятий по 1,5 часа</span>
                     </div>
                     <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
                 </div>
-                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
-                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А1</span>
-                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Квадрациклы</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/4">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория В мкпп +</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Коробка передач: механика</span>
+                    <div class="flex justify-center py-12">
+                        <img src="{{ url_for('static', path='/images/main/B.png') }}">
+                    </div>
                     <div class="flex flex-col pb-6">
-                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 35 000 ₽</span>
                         <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">20 практических занятий по 1,5 часа</span>
                     </div>
                     <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
                 </div>
-                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
-                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А2</span>
-                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Багги</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/4">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория В акпп</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Коробка передач: автомат</span>
+                    <div class="flex justify-center py-12">
+                        <img src="{{ url_for('static', path='/images/main/B.png') }}">
+                    </div>
                     <div class="flex flex-col pb-6">
-                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 28 000 ₽</span>
                         <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">10 практических занятий по 1,5 часа</span>
+                    </div>
+                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
+                </div>
+                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/4">
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория В акпп +</span>
+                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Коробка передач: автомат</span>
+                    <div class="flex justify-center py-12">
+                        <img src="{{ url_for('static', path='/images/main/B.png') }}">
+                    </div>
+                    <div class="flex flex-col pb-6">
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 39 000 ₽</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">10 практических занятий по 1,5 часа</span>
                     </div>
                     <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
                 </div>
             </section>
             <section id="accordion-1-body-3" class="overflow-x-auto flex flex-row">
                 <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
-                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А</span>
-                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Мотоциклы</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория C</span>
+                    <div class="flex justify-center py-12">
+                        <img src="{{ url_for('static', path='/images/main/C.png') }}">
+                    </div>
                     <div class="flex flex-col pb-6">
-                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 35 000 ₽</span>
                         <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">10 практических занятий по 1,5 часа</span>
                     </div>
                     <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
                 </div>
                 <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
-                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А1</span>
-                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Квадрациклы</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
-                    <div class="flex flex-col pb-6">
-                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория D</span>
+                    <div class="flex justify-center py-12">
+                        <img src="{{ url_for('static', path='/images/main/D.png') }}">
                     </div>
-                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
-                </div>
-                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
-                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А2</span>
-                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Багги</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
                     <div class="flex flex-col pb-6">
-                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
+                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 35 000 ₽</span>
                         <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
+                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятия по 1,5 часа</span>
                     </div>
                     <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
                 </div>
             </section>
-            <section id="accordion-1-body-4" class="overflow-x-auto flex flex-row">
-                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
-                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А</span>
-                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Мотоциклы</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
-                    <div class="flex flex-col pb-6">
-                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
-                    </div>
-                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
-                </div>
-                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
-                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А1</span>
-                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Квадрациклы</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
-                    <div class="flex flex-col pb-6">
-                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
-                    </div>
-                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
-                </div>
-                <div class="bg-white flex flex-col p-6 rounded-3xl group hover:bg-black-custom select-none min-w-[300px] basis-1/3">
-                    <span class="text-bold-700-20 text-black-custom pb-1 group-hover:text-white">Категория А2</span>
-                    <span class="text-regular-400-14 pb-6 group-hover:text-white">Багги</span>
-                    <div class="bg-gray-light-custom rounded-3xl h-60 mb-2 w-full group-hover:bg-white"></div>
-                    <div class="flex flex-col pb-6">
-                        <span class="text-bold-700-16 text-black-custom group-hover:text-white">Стоимость: 22 000 ₽</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">Длительность: 1.5 - 2 месяца</span>
-                        <span class="text-regular-400-16 text-black-custom group-hover:text-white">4 практических занятий по 1,5 часа</span>
-                    </div>
-                    <button class="open-modal btn-custom text-nsans-bold-700-18px w-full" type="button">Оставить заявку</button>
-                </div>
-            </section>
-            <section id="accordion-1-body-5" class="hidden flex flex-col place-items-center">
+            <section id="accordion-1-body-4" class="hidden flex flex-col place-items-center">
                 <div class="max-w-[655px] sm:pb-28 pb-8 flex flex-col gap-y-10 place-items-center">
                     <h2 class="text-h2">Восстановление навыков</h2>
                     <span class="text-regular-400-18 text-gray-custom">Уже имеется водительское удостоверение, но чувствуете себя не увереным при управлении транспортным средством</span>
@@ -233,7 +212,7 @@
             </section>
         </div>
         <a id="advantages-anchor"></a>
-        <div class="sm:mt-24 mt-14 sm:mx-10">
+        <div class="sm:mt-24 mt-14 sm:mx-10 xl-custom:w-[1440px] sm-custom:mx-auto">
             <section class="bg-gray-light-custom sm:rounded-2xl p-4">
                 <h2 class="pt-6 sm:text-h2 text-bold-700-32-44L sm:text-center pb-10">Наши преимущества</h2>
                 <div class="flex md-custom:flex-row flex-col gap-y-1 gap-x-1">
@@ -277,7 +256,7 @@
             <section class="sm:pt-24 pt-14">
                 <h2 class="pt-6 text-bold-700-32-44L sm:text-h2 text-start pb-10 mx-4 sm:mx-auto">Форма обучения</h2>
                 <div class="flex md-custom:flex-row flex-col gap-x-1 gap-y-1 select-none">
-                    <div class="rounded-3xl bg-gray-light-custom w-full p-8 flex flex-col group hover:bg-lime-custom">
+                    <div class="rounded-3xl bg-gray-light-custom w-full p-8 flex flex-col bg-lime-custom">
                         <div class="flex flex-row justify-between">
                             <svg class="m-2" width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="88" height="88" rx="44" fill="white"/>
@@ -285,18 +264,18 @@
                             </svg>
                             <div class="text-medium-500-16 bg-white rounded-3xl px-4 py-2 self-start h-min text-black-custom">Самый лучший вариант 👍</div>
                         </div>
-                        <span class="text-bold-700-24 pt-4 pb-6 text-black-custom group-hover:text-white">Онлайн</span>
+                        <span class="text-bold-700-24 pt-4 pb-6 text-white">Онлайн</span>
                         <ul class="list-disc list-outside px-8 flex flex-col gap-y-2">
-                            <li class="text-regular-400-18 text-black-custom group-hover:text-white">Лекции проходят на специализированной платформе</li>
-                            <li class="text-regular-400-18 text-black-custom group-hover:text-white">Приглашения приходят на почту</li>
-                            <li class="text-regular-400-18 text-black-custom group-hover:text-white">После окончания теории водитель приедет в любую часть города для практики</li>
+                            <li class="text-regular-400-18 text-white">Лекции проходят на специализированной платформе</li>
+                            <li class="text-regular-400-18 text-white">Приглашения приходят на почту</li>
+                            <li class="text-regular-400-18 text-white">После окончания теории водитель приедет в любую часть города для практики</li>
                         </ul>
                     </div>
-                    <div class="rounded-3xl bg-gray-light-custom w-full p-8 flex flex-col group hover:bg-lime-custom">
-                        <span class="text-bold-700-24 pt-32 pb-6 text-black-custom group-hover:text-white">Очная</span>
+                    <div class="rounded-3xl bg-gray-light-custom w-full p-8 flex flex-col">
+                        <span class="text-bold-700-24 pt-32 pb-6 text-black-custom">Очная</span>
                         <ul class="list-disc list-outside px-8 flex flex-col gap-y-2">
-                            <li class="text-regular-400-18 text-black-custom group-hover:text-white">Просторные классы</li>
-                            <li class="text-regular-400-18 text-black-custom group-hover:text-white">Индивидуальный подход</li>
+                            <li class="text-regular-400-18 text-black-custom">Просторные классы</li>
+                            <li class="text-regular-400-18 text-black-custom">Индивидуальный подход</li>
                         </ul>
                         <svg class="place-self-end" width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="88" height="88" rx="44" fill="white"/>
@@ -307,7 +286,7 @@
             </section>
         </div>
         <a id="autopark-anchor"></a>
-        <div class="sm:mt-24 mt-14">
+        <div class="sm:mt-24 mt-14 xl-custom:w-[1440px] sm-custom:mx-auto">
             <section class="flex flex-col p-1">
                 <div class="flex flex-row justify-between">
                     <h2 class="sm:text-h2 text-bold-700-32-44L text-start sm:pb-10 pb-8 sm:px-10 px-4">Наш автопарк</h2>
@@ -379,7 +358,7 @@
             </section>
         </div>
         <a id="howwork-anchor"></a>
-        <div class="sm:mt-24 mt-14 sm:mx-10">
+        <div class="sm:mt-24 mt-14 sm:mx-10 xl-custom:w-[1440px] sm-custom:mx-auto">
             <section class="bg-gray-light-custom sm:rounded-2xl p-4">
                 <h2 class="pt-6 sm:text-h2 text-bold-700-32-44L sm-custom:text-center sm:pb-10 pb-8">Как мы работаем</h2>
                 <div class="flex sm-custom:flex-row flex-col gap-y-1 gap-x-1">
@@ -391,7 +370,7 @@
                     <div class="bg-white p-8 flex flex-col gap-y-2 rounded-3xl basis-1/3 min-h-[282px]">
                         <span class="font-inter-regular opacity-10 font-light text-7xl pb-12">02</span>
                         <span class="text-bold-700-20 text-black-custom">Оплатить</span>
-                        <span class="text-regular-400-18 text-gray-custom">Заключение договора. Есть возможность оплаты в <span class="text-lime-custom">рассрочку</span></span>
+                        <span class="text-regular-400-18 text-gray-custom">Заключение договора. Есть возможность оплаты в <a href="#installment-anchor" class="text-lime-custom">рассрочку</a></span>
                     </div>
                     <div class="bg-white p-8 flex flex-col gap-y-2 rounded-3xl basis-1/3 min-h-[282px]">
                         <span class="font-inter-regular opacity-10 font-light text-7xl pb-12">03</span>
@@ -402,7 +381,7 @@
             </section>
         </div>
         <a id="filials-anchor"></a>
-        <div class="sm:mt-24 mt-14 mx-10 hidden lg:block">
+        <div class="sm:mt-24 mt-14 hidden lg:block xl-custom:w-[1440px] sm-custom:mx-auto">
             <section>
                 <h2 class="pt-6 text-h2 pb-14">Наши филиалы</h2>
                 <div class="flex flex-row gap-x-2">
@@ -437,7 +416,7 @@
             </section>
         </div>
         <a id="instructors-anchor"></a>
-        <div class="sm-custom:mt-24 mt-12 ml-5 sm-custom:ml-10 flex flex-col">
+        <div class="sm-custom:mt-24 mt-12 ml-5 flex flex-col xl-custom:w-[1440px] sm-custom:mx-auto">
             <h2 class="text-bold-700-32-44L text-start pb-10 sm-custom:hidden inline-block">Наши инструктора</h2>
             <section class="sm-custom-max:order-last">
                 <div class="flex flex-row justify-between sm-custom-max:justify-center">
@@ -485,7 +464,7 @@
                     <div id="carousel-1" class="main-carousel">
                         <div class="carousel-cell flex flex-col">
                             <img class="rounded-[32px] !h-[300px] w-[240px] flex-none" src="{{ url_for('static', path='/images/instructors/1.png') }}">
-                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4">
+                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4 px-1">
                                 <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
                                 <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
                                 <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
@@ -493,15 +472,15 @@
                         </div>
                         <div class="carousel-cell flex flex-col mx-8">
                             <img class="rounded-[32px] !h-[300px] w-[240px] flex-none" src="{{ url_for('static', path='/images/instructors/2.png') }}">
-                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4">
-                                <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
-                                <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
-                                <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
+                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4 px-1">
+                                <span class="text-bold-700-24 text-black-custom">Роман Викторович</span>
+                                <span class="text-regular-400-18 text-black-custom">Опыт: 32 года</span>
+                                <span class="text-regular-400-18 text-black-custom">Обучил более 2000 учеников</span>
                             </div>
                         </div>
                         <div class="carousel-cell flex flex-col">
                             <img class="rounded-[32px] !h-[300px] w-[240px] flex-none" src="{{ url_for('static', path='/images/instructors/3.png') }}">
-                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4">
+                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4 px-1">
                                 <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
                                 <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
                                 <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
@@ -509,23 +488,23 @@
                         </div>
                         <div class="carousel-cell flex flex-col mx-8">
                             <img class="rounded-[32px] !h-[300px] w-[240px] flex-none" src="{{ url_for('static', path='/images/instructors/4.png') }}">
-                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4">
-                                <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
-                                <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
-                                <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
+                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4 px-1">
+                                <span class="text-bold-700-24 text-black-custom">Николай Иванович</span>
+                                <span class="text-regular-400-18 text-black-custom">Опыт: 22 года</span>
+                                <span class="text-regular-400-18 text-black-custom">Обучил более 900 учеников</span>
                             </div>
                         </div>
                         <div class="carousel-cell flex flex-col">
                             <img class="rounded-[32px] !h-[300px] w-[240px] flex-none" src="{{ url_for('static', path='/images/instructors/5.png') }}">
-                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4">
-                                <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
-                                <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
-                                <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
+                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4 px-1">
+                                <span class="text-bold-700-24 text-black-custom">Алексей Николаевич</span>
+                                <span class="text-regular-400-18 text-black-custom">Опыт: 20 лет</span>
+                                <span class="text-regular-400-18 text-black-custom">Обучил более 700 учеников</span>
                             </div>
                         </div>
                         <div class="carousel-cell flex flex-col ml-8">
                             <img class="rounded-[32px] !h-[300px] w-[240px] flex-none" src="{{ url_for('static', path='/images/instructors/6.png') }}">
-                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4">
+                            <div class="basis-1/5 flex flex-col pt-10 gap-y-4 px-1">
                                 <span class="text-bold-700-24 text-black-custom">Олег Мангол</span>
                                 <span class="text-regular-400-18 text-black-custom">Опыт: 29 лет</span>
                                 <span class="text-regular-400-18 text-black-custom">Обучил более 1000 учеников</span>
@@ -538,8 +517,46 @@
         <a id="installment-anchor"></a>
         <div class="sm:mt-24 mt-14">
             <section class="flex flex-row sm:py-16 py-10 lg-custom:pl-10 pl-4 lg-custom:pr-24 pr-8 bg-gray-light-custom lg-custom:gap-x-28">
-                <div class="bg-gray-medium-custom basis-1/2 rounded-[48px] lg-custom:flex hidden">
-                    <img src="{{ url_for('static', path='/images/car.png') }}">
+                <div class="basis-1/2 rounded-[48px] lg-custom:flex hidden justify-center">
+                    <svg width="571" height="646" viewBox="0 0 571 646" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M270.377 589.54C270.377 589.54 35.9624 572.323 7.77268 457.888C-20.4171 343.455 42.0576 327.885 63.3903 263.79C84.7232 199.694 -12.0362 161.894 52.724 74.6855C117.484 -12.5231 212.989 -14.0444 253.234 27.0299C293.48 68.1042 339.874 1.92883 414.58 39.2C489.284 76.4711 507.57 151.785 483.951 210.607C460.333 269.43 557.179 325.684 569.326 392.378C581.473 459.071 471.847 618.945 270.377 589.54Z" fill="#EBF1F9"/>
+<path d="M97.9322 645.056H157.811C173.183 645.056 186.932 635.511 192.285 621.125L195.114 613.521C199.204 602.528 207.593 593.712 218.3 588.891C228.485 584.306 242.226 575.957 255.547 561.03C281.375 532.086 295.081 501.037 295.081 501.037L208.027 500.611C208.027 500.611 215.862 451.996 172.595 387.427C167.964 380.516 165.857 372.222 166.579 363.939L170.68 316.848C170.68 316.848 200.082 284.044 182.043 243.347C182.043 243.347 164.793 219.503 157.95 228.232C157.95 228.232 105.844 352.107 101.1 370.526C96.3563 388.945 90.0308 400.522 96.3563 458.41C98.0309 473.735 98.6323 486.515 98.6115 497.023C98.5713 517.197 94.0578 537.109 85.4172 555.346L66.4388 595.401C55.5058 618.475 72.3643 645.056 97.9322 645.056Z" fill="#C2CFE1"/>
+<path d="M182.588 403.581C182.588 403.581 153.044 475.784 155.911 489.436C158.777 503.089 176.705 521.344 220.692 515.259C264.679 509.174 295.082 501.037 295.082 501.037C295.082 501.037 296.921 403.594 295.082 398.653C293.244 393.711 214.155 358.637 211.044 358.637C207.932 358.637 182.588 403.581 182.588 403.581Z" fill="#B7C6DC"/>
+<path d="M173.926 564.7C160.888 550.248 142.776 552.53 123.728 545.938C104.681 539.346 98.5719 491.818 98.5719 491.818L98.57 491.811C98.6003 493.604 98.6149 495.346 98.6115 497.023C98.5714 517.197 94.0579 537.109 85.4173 555.345L66.4388 595.4C55.5058 618.475 72.3643 645.055 97.9322 645.055H157.811C173.183 645.055 186.933 635.511 192.285 621.125L195.058 613.671C199.179 602.593 207.631 593.711 218.415 588.84C227.072 584.928 238.276 578.3 249.601 567.247C210.912 583.483 186.965 579.152 173.926 564.7Z" fill="#BECCDF"/>
+<path d="M372.331 145.638C372.331 145.638 402.084 125.758 408.878 138.856C415.672 151.954 370.223 198.302 370.223 198.302L372.331 145.638Z" fill="#C2CFE1"/>
+<path d="M372.331 232.262C372.331 232.262 402.084 212.381 408.878 225.479C415.672 238.577 370.223 284.924 370.223 284.924L372.331 232.262Z" fill="#C2CFE1"/>
+<path d="M372.331 291.278C372.331 291.278 402.084 271.397 408.878 284.495C415.672 297.593 370.223 343.941 370.223 343.941L372.331 291.278Z" fill="#C2CFE1"/>
+<path d="M351.782 123.361H188.443C176.28 123.361 166.418 133.205 166.418 145.35V478.622C166.418 490.876 176.396 500.612 188.443 500.612H351.782C363.932 500.612 373.807 490.781 373.807 478.622V145.35C373.807 133.097 363.83 123.361 351.782 123.361Z" fill="#9AAFCD"/>
+<path d="M342.777 133.864H325.494C323.689 133.864 322.226 135.325 322.226 137.126C322.226 143.728 316.866 149.08 310.253 149.08H229.969C223.357 149.08 217.997 143.728 217.997 137.127C217.997 135.325 216.534 133.864 214.729 133.864H197.445C186.205 133.864 177.094 142.961 177.094 154.182V466.218C177.094 477.439 186.205 486.536 197.445 486.536H342.777C354.017 486.536 363.129 477.439 363.129 466.218V154.182C363.129 142.961 354.017 133.864 342.777 133.864Z" fill="url(#paint0_linear_672_2351)"/>
+<path d="M164.006 345.266C164.006 345.266 163.756 346.214 166.294 348.264L170.683 316.848C170.683 316.848 192.312 292.716 187.086 260.17C185.297 249.029 179.747 238.775 171.257 231.325C166.411 227.073 161.089 224.231 157.952 228.232C157.952 228.232 133.45 286.486 116.52 329.037L164.006 345.266Z" fill="#C2CFE1"/>
+<path d="M339.735 205.088H200.488C196.182 205.088 192.691 209.205 192.691 214.284V237.759C192.691 242.838 196.182 246.955 200.488 246.955H339.735C344.041 246.955 347.532 242.838 347.532 237.759V214.284C347.532 209.205 344.041 205.088 339.735 205.088Z" fill="#EBF1F9"/>
+<path d="M334.628 218.292H205.594V223.445H334.628V218.292Z" fill="#9AAFCD"/>
+<path d="M334.628 228.598H205.594V233.751H334.628V228.598Z" fill="#9AAFCD"/>
+<path d="M339.735 263.058H200.488C196.182 263.058 192.691 267.175 192.691 272.253V295.729C192.691 300.808 196.182 304.925 200.488 304.925H339.735C344.041 304.925 347.532 300.808 347.532 295.729V272.253C347.532 267.175 344.041 263.058 339.735 263.058Z" fill="#EBF1F9"/>
+<path d="M334.628 276.262H205.594V281.415H334.628V276.262Z" fill="#9AAFCD"/>
+<path d="M334.628 286.567H205.594V291.72H334.628V286.567Z" fill="#9AAFCD"/>
+<path d="M339.735 321.027H200.488C196.182 321.027 192.691 325.145 192.691 330.223V353.699C192.691 358.778 196.182 362.895 200.488 362.895H339.735C344.041 362.895 347.532 358.778 347.532 353.699V330.223C347.532 325.145 344.041 321.027 339.735 321.027Z" fill="#EBF1F9"/>
+<path d="M334.628 334.231H205.594V339.384H334.628V334.231Z" fill="#9AAFCD"/>
+<path d="M334.628 344.537H205.594V349.69H334.628V344.537Z" fill="#9AAFCD"/>
+<path d="M302.369 395.101H237.856C234.292 395.101 231.402 397.983 231.402 401.54V424.088C231.402 427.644 234.292 430.527 237.856 430.527H302.369C305.933 430.527 308.823 427.644 308.823 424.088V401.54C308.823 397.983 305.933 395.101 302.369 395.101Z" fill="url(#paint1_radial_672_2351)"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M284.225 402.731C284.181 402.687 284.135 402.644 284.09 402.602C284.08 402.594 284.071 402.585 284.062 402.577C284.02 402.539 283.977 402.503 283.934 402.468C283.92 402.456 283.905 402.444 283.89 402.431C283.854 402.403 283.818 402.375 283.782 402.348C283.758 402.33 283.733 402.312 283.708 402.295C283.684 402.278 283.66 402.261 283.635 402.244C283.592 402.215 283.549 402.186 283.505 402.159C283.489 402.149 283.474 402.14 283.459 402.131C283.428 402.112 283.396 402.093 283.365 402.075C283.358 402.071 283.351 402.067 283.344 402.064C283.283 402.029 283.222 401.997 283.16 401.966C283.153 401.963 283.146 401.959 283.139 401.956C283.035 401.905 282.93 401.859 282.823 401.818C282.819 401.816 282.815 401.814 282.81 401.813C282.748 401.789 282.684 401.766 282.621 401.745C282.605 401.74 282.589 401.735 282.573 401.73C282.529 401.716 282.486 401.703 282.442 401.691C282.413 401.683 282.384 401.675 282.355 401.668C282.329 401.661 282.303 401.655 282.276 401.649C282.239 401.64 282.201 401.632 282.163 401.624C282.139 401.619 282.114 401.614 282.09 401.61C282.048 401.602 282.007 401.595 281.965 401.589C281.949 401.586 281.933 401.584 281.916 401.581C281.863 401.574 281.809 401.567 281.755 401.562C281.743 401.561 281.731 401.56 281.719 401.559C281.662 401.554 281.605 401.549 281.547 401.546C281.547 401.546 281.546 401.546 281.545 401.546C281.486 401.544 281.426 401.542 281.366 401.542C281.357 401.542 281.347 401.542 281.337 401.542C281.279 401.542 281.22 401.543 281.162 401.546C281.155 401.546 281.148 401.547 281.141 401.547C281.088 401.55 281.036 401.554 280.983 401.559C280.972 401.56 280.961 401.56 280.95 401.562C280.896 401.567 280.843 401.573 280.789 401.581C280.771 401.583 280.754 401.586 280.736 401.589C280.721 401.591 280.707 401.593 280.693 401.595C280.694 401.595 280.694 401.595 280.695 401.596C279.883 401.727 279.103 402.105 278.477 402.73C278.477 402.73 278.477 402.73 278.477 402.73L267.236 413.953C267.049 414.139 266.746 414.139 266.56 413.953L261.743 409.143C260.156 407.559 257.582 407.559 255.995 409.143C255.995 409.143 255.995 409.143 255.995 409.143C254.408 410.728 254.408 413.297 255.995 414.882L264.024 422.898C264.65 423.523 265.43 423.901 266.242 424.032C266.242 424.032 266.241 424.033 266.24 424.033C266.252 424.035 266.265 424.036 266.277 424.038C266.298 424.041 266.319 424.045 266.341 424.048C266.392 424.055 266.443 424.061 266.494 424.066C266.508 424.067 266.523 424.068 266.537 424.07C266.585 424.074 266.632 424.077 266.679 424.08C266.69 424.081 266.701 424.081 266.713 424.082C266.768 424.084 266.824 424.086 266.88 424.086C266.893 424.086 266.906 424.086 266.919 424.086C266.976 424.085 267.032 424.084 267.089 424.082C267.095 424.081 267.1 424.081 267.106 424.081C267.157 424.078 267.208 424.074 267.26 424.07C267.275 424.068 267.29 424.067 267.306 424.066C267.357 424.06 267.409 424.054 267.46 424.047C267.479 424.044 267.499 424.041 267.518 424.038C267.555 424.033 267.591 424.026 267.628 424.02C267.66 424.014 267.693 424.008 267.725 424.001C267.757 423.994 267.788 423.988 267.819 423.98C267.848 423.974 267.877 423.967 267.906 423.959C267.925 423.954 267.944 423.949 267.963 423.944C268.018 423.929 268.072 423.913 268.126 423.896C268.138 423.892 268.15 423.889 268.161 423.885C268.341 423.826 268.518 423.755 268.69 423.67C268.694 423.668 268.698 423.666 268.703 423.664C268.769 423.631 268.835 423.596 268.9 423.559C268.903 423.558 268.907 423.556 268.91 423.554C268.943 423.535 268.975 423.516 269.008 423.496C269.018 423.491 269.027 423.485 269.036 423.479C269.086 423.448 269.136 423.416 269.185 423.383C269.207 423.367 269.23 423.352 269.252 423.336C269.279 423.317 269.306 423.297 269.332 423.277C269.367 423.251 269.401 423.225 269.435 423.198C269.451 423.185 269.467 423.173 269.482 423.16C269.525 423.125 269.567 423.089 269.608 423.052C269.618 423.043 269.628 423.034 269.637 423.026C269.682 422.984 269.727 422.942 269.771 422.899C269.771 422.898 269.771 422.898 269.771 422.898C269.771 422.898 269.771 422.898 269.771 422.898L284.225 408.469C285.812 406.884 285.812 404.315 284.225 402.731Z" fill="#EDF0FB"/>
+<path d="M331.663 362.314C331.663 362.314 306.537 364.42 305.659 371.086C304.78 377.751 306.713 389.505 330.434 391.785H355.004C355.004 391.785 347.653 371.437 348.004 370.735C348.355 370.033 331.663 362.314 331.663 362.314Z" fill="#C2CFE1"/>
+<path d="M291.276 461.793C287.9 463.607 286.812 467.938 288.735 471.249C300.365 491.275 346.237 570.214 350.376 576.642C355.12 584.01 366.717 601.376 405.197 610.323C425.829 615.12 439.944 624.758 448.6 632.666C457.256 640.575 468.506 645.056 480.24 645.056H524.701C548.863 645.056 565.628 621.089 557.39 598.412C548.164 573.012 537.109 536.318 526.961 486.126C526.961 486.126 509.039 390.874 475.304 394.032C475.304 394.032 454.746 372.455 434.715 376.665C434.715 376.665 396.763 354.036 375.151 354.036L323.239 292.786C318.101 286.725 309.044 285.537 302.728 290.362C300.696 291.915 299.147 293.966 298.718 296.674C297.137 306.673 310.315 331.933 331.4 362.456C352.485 392.979 404.67 489.81 382.003 532.437C382.003 532.437 358.81 515.071 338.779 487.179C321.968 463.77 302.186 455.93 291.276 461.793Z" fill="#C2CFE1"/>
+<path d="M375.342 354.06C382.23 359.946 388.686 366.331 394.783 373.041C400.856 379.636 406.675 386.863 411.96 394.149C416.818 400.865 422.512 409.91 426.132 417.43C431.043 427.372 433.242 434.745 434.701 443.214L434.546 443.245C432.686 434.435 429.202 426.026 425.029 418.002C422.152 412.353 416.492 403.007 410.676 395.07C405.427 387.724 399.755 380.684 393.843 373.858C388.274 367.444 381.27 359.941 375.234 354.175L375.342 354.06Z" fill="#B7C6DC"/>
+<path d="M434.375 376.501C439.98 379.364 444.978 383.358 449.395 387.872C457.701 396.228 464.506 407.69 467.901 420.585C469.263 426.313 470.143 430.192 470.286 439.25L470.128 439.263C469.608 433.058 468.473 426.906 466.71 420.938C462.895 408.551 456.906 397.953 448.476 388.714C444.506 384.375 439.319 379.696 434.297 376.638L434.375 376.501Z" fill="#B7C6DC"/>
+<path d="M474.887 393.61C479.844 397.352 484.842 403.957 487.275 408.433C492.892 418.069 495.549 428.299 496.013 439.246L495.856 439.268C493.746 427.073 491.668 420.151 485.966 409.146C484.108 405.441 479.314 398.171 474.797 393.706L474.887 393.61Z" fill="#B7C6DC"/>
+<path d="M337.668 372.06C360.922 409.363 402.644 495.052 382.001 532.437L395.702 545.938C395.702 545.938 430.318 507.653 375.233 423.222C362.414 403.574 349.673 386.578 337.668 372.06Z" fill="#B7C6DC"/>
+<defs>
+<linearGradient id="paint0_linear_672_2351" x1="199.664" y1="479.264" x2="336.272" y2="149.908" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C2CFE1"/>
+<stop offset="1" stop-color="#EBF1F9"/>
+</linearGradient>
+<radialGradient id="paint1_radial_672_2351" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(270.329 412.814) scale(30.1303 30.0609)">
+<stop stop-color="#00AC3C"/>
+<stop offset="1" stop-color="#00AC3C"/>
+</radialGradient>
+</defs>
+</svg>
                 </div>
                 <div class="flex flex-col sm:pt-12 pt-0 lg-custom-max:w-full">
                     <h2 class="sm-custom:text-h2 text-bold-700-32-44L text-black-custom pb-10 sm-custom:pl-8">Как оформить рассрочку</h2>
@@ -622,7 +639,7 @@
             <section class="flex flex-col sm-custom-max:pr-5">
                 <div id="carousel-2" class="main-carousel">
                     <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
-                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <span class="text-regular-400-16 text-black-custom">Добрый день, Наиль! Сегодня я получила своё долгожданное водительское удостоверение! Хочу Вам выразить огромную благодарность за поддержку, за  приятную атмосферу! Желаю Вам и всему коллективу автошколы дальнейших успехов в работе, экономической стабильности и самых лучших и адекватных учеников! Было приятно иметь с Вами дело🤗 Хорошего денёчка Вам</span>
                         <div class="flex flex-row gap-x-4">
                             <div class="w-10 place-self-center">
                                 <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
@@ -650,7 +667,7 @@
                         </div>
                     </div>
                     <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
-                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <span class="text-regular-400-16 text-black-custom">Вы мне помогли осуществить свою подростковую мечту😅 Знаю, что у вас сегодня загруженный день. Спасибо за пожелания!  Мне очень повезло с Вами и со всеми людьми, с которыми мне довелось взаимодействовать ! Спасибо    ☺️</span>
                         <div class="flex flex-row gap-x-4">
                                 <div class="w-10 place-self-center">
                                     <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
@@ -678,7 +695,7 @@
                             </div>
                     </div>
                     <div class="carousel-cell mx-3 flex flex-col rounded-lg bg-white p-6 gap-y-6 max-w-[384px]">
-                        <span class="text-regular-400-16 text-black-custom">Отличная автошкола "Drive with Us" с индивидуальным подходом, профессиональными инструкторами и современным автопарком. Рекомендую!</span>
+                        <span class="text-regular-400-16 text-black-custom">И за Николая отдельное спасибо! Идеальные инструктор, очень профессиональный, спокойный и терпеливый</span>
                         <div class="flex flex-row gap-x-4">
                                 <div class="w-10 place-self-center">
                                     <img src="{{ url_for('static', path='/images/random_man_2.png') }}">
