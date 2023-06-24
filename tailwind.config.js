@@ -19,6 +19,7 @@ module.exports = {
       },
       extend: {
           screens: {
+              'sm-custom-0.5-max': {max: '420px'},
               'sm-custom': '790px',
               'sm-custom-max': {max: '790px'},
               'sm-custom-2-max': {max: '868px'},

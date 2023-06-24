@@ -24,7 +24,11 @@ activate_empty_forms("#send-application")
 
 generate_modal(1, '.open-modal', '#close-modal')
 
-generate_collapse(1)
+const collapse = generate_collapse(1)
+
+$('#targetEl-1').find('a').on("click", function () {
+    collapse.toggle()
+})
 
 generate_carousel_flick(
     '#carousel-0',
@@ -61,21 +65,9 @@ generate_carousel_flick(
             "initialIndex": 1,
             "pageDots": false,
             "draggable": false,
+            "adaptiveHeight": true,
     },
     {blur: true, s_prev:'#prev-carousel-2', s_next: '#next-carousel-2'}
-
-)
-
-generate_carousel_flick(
-    '#carousel-6',
-    {"prevNextButtons": false,
-            "groupCells": '100%',
-            "initialIndex": 0,
-            "pageDots": false,
-            "draggable": true,
-            'cellAlign': 'left',
-    },
-    {blur: false}
 
 )
 
